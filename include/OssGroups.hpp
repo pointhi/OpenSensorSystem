@@ -37,6 +37,9 @@ namespace oss {
      */
     class MainTreeGroup : public oss::tree::TreeNode {
     public:
+        virtual ~MainTreeGroup() = 0;
+
+    public:
 
         MainTreeGroup() {
             this->SetState(oss::NodeState::WAITING);
@@ -59,13 +62,15 @@ namespace oss {
         }
 
     private:
-        NodeState State;
+        oss::NodeState::NodeState State;
     };
 
     /**
      * @brief General Class in which are the parent for all Host Classes
      */
     class HostGroup : public oss::MainTreeGroup {
+    public:
+        virtual ~HostGroup() = 0;
     };
 
     namespace io {
@@ -74,6 +79,8 @@ namespace oss {
          * @brief General Class in which are the parent for all IO-Slave Classes
          */
         class IoGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~IoGroup() = 0;
         };
     }
 
@@ -83,6 +90,8 @@ namespace oss {
          * @brief General Class in which are the parent for all I2C-Slave Classes
          */
         class I2cGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~I2cGroup() = 0;
         };
     }
 
@@ -92,6 +101,8 @@ namespace oss {
          * @brief General Class in which are the parent for all CAN-Slave Classes
          */
         class CanGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~CanGroup() = 0;
         };
     }
 
@@ -101,6 +112,8 @@ namespace oss {
          * @brief General Class in which are the parent for all SPI-Slave Classes
          */
         class SpiGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~SpiGroup() = 0;
         };
     }
 
@@ -110,6 +123,8 @@ namespace oss {
          * @brief General Class in which are the parent for all UART-Slave Classes
          */
         class UartGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~UartGroup() = 0;
         };
     }
 
@@ -119,6 +134,8 @@ namespace oss {
          * @brief General Class in which are the parent for all Ethernet-Slave Classes
          */
         class EthernetGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~EthernetGroup() = 0;
         };
     }
 }
