@@ -29,6 +29,7 @@
           <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp</itemPath>
           <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp</itemPath>
         </logicalFolder>
+        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp</itemPath>
       </logicalFolder>
@@ -68,6 +69,11 @@
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp"
@@ -150,6 +156,11 @@
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp"
             ex="false"
             tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp"
+            ex="false"
+            tool="1"
             flavor2="0">
       </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp"
