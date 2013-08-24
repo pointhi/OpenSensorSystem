@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/905750475/OssGroups.o \
 	${OBJECTDIR}/_ext/1288313479/OssRootNode.o \
+	${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o \
 	${OBJECTDIR}/_ext/1288313479/OssTree.o \
 	${OBJECTDIR}/_ext/1303538962/I2cHost.o \
 	${OBJECTDIR}/_ext/1303538962/I2cSlave.o \
@@ -76,6 +77,11 @@ ${OBJECTDIR}/_ext/1288313479/OssRootNode.o: /home/thomas/Dokumente/Projekte/robo
 	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1288313479/OssRootNode.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp
+
+${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp
 
 ${OBJECTDIR}/_ext/1288313479/OssTree.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479

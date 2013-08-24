@@ -53,16 +53,19 @@ namespace oss {
          */
         virtual void parseXml(tinyxml2::XMLNode * const xmlNode) = 0;
 
-        void SetState(oss::NodeState::NodeState NewState) {
-            this->State = NewState;
+        void SetState(oss::NodeState::NodeState _state) {
+            this->state = _state;
         }
 
         oss::NodeState::NodeState GetState() const {
-            return this->State;
+            return this->state;
         }
 
+    protected:
+        void parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode);
+
     private:
-        oss::NodeState::NodeState State;
+        oss::NodeState::NodeState state;
     };
 
     /**

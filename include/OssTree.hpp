@@ -87,8 +87,8 @@ namespace oss {
              *
              * @param newName new Name
              */
-            void SetName(const std::string newName) {
-                this->name = newName;
+            void SetName(const std::string _name) {
+                this->name = _name;
             }
 
             /**

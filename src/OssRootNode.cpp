@@ -53,6 +53,8 @@ namespace oss {
             } else if (childName == "ethernet") {
             }
         }
+
+        this->MainTreeGroup::parseMainXmlParameter(xmlNode);
     }
 
     void RootNode::parseXml(std::string filePath) {

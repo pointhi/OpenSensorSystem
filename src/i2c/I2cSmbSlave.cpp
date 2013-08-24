@@ -36,6 +36,7 @@ namespace oss {
         void SmbSlave::parseXml(tinyxml2::XMLNode * const xmlNode) {
             if (std::string(xmlNode->ToElement()->Name()) == std::string("smb-slave")) {
                 this->parseMainXmlParameter(xmlNode);
+                this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
                 std::clog << "WARNING: <smb-slave> isn't parent-node, ignoring child elements and values" << std::endl;
             }

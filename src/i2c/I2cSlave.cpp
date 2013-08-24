@@ -16,6 +16,7 @@
 
 #include "../../include/OssTree.hpp"
 #include "../../include/i2c/OssI2cSlave.hpp"
+#include "../../include/OssSpecialFunctions.hpp"
 
 namespace oss {
     namespace i2c {
@@ -24,10 +25,16 @@ namespace oss {
          *
          */
 
-        Slave::Slave() : i2cAdress(0) {
+        Slave::Slave()
+        : i2cAdress(0)
+        , maxClock(0)
+        , generateInterrupt(false) {
         }
 
-        Slave::Slave(std::string newName) : i2cAdress(0) {
+        Slave::Slave(std::string newName)
+        : i2cAdress(0)
+        , maxClock(0)
+        , generateInterrupt(false) {
             this->SetName(newName);
         }
 
@@ -40,28 +47,50 @@ namespace oss {
         void Slave::parseXml(tinyxml2::XMLNode * const xmlNode) {
             if (std::string(xmlNode->ToElement()->Name()) == std::string("i2c-slave")) {
                 this->parseMainXmlParameter(xmlNode);
+                this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
                 std::clog << "WARNING: <i2c-slave> isn't parent-node, ignoring child elements and values" << std::endl;
             }
         }
 
         void Slave::parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode) {
-            if (xmlNode->FirstChildElement("name")) {
-                this->SetName(xmlNode->FirstChildElement("name")->GetText());
+            if (xmlNode->ToElement()->Attribute("name")) {
+                this->SetName(xmlNode->ToElement()->Attribute("name"));
             }
-            if (xmlNode->FirstChildElement("adress")) {
-                this->SetI2cAdress(xmlNode->FirstChildElement("adress")->GetText());
+            if (xmlNode->ToElement()->Attribute("adress")) {
+                this->SetI2cAdress(xmlNode->ToElement()->Attribute("adress"));
             }
+            if (xmlNode->ToElement()->Attribute("maxclock=")) {
+                this->SetMaxClock(xmlNode->ToElement()->Attribute("maxclock="));
+            }
+
         }
 
-        void Slave::SetI2cAdress(std::string adress) {
+        void Slave::SetI2cAdress(std::string _i2cAdress) {
             std::stringstream ss;
-            ss << std::hex << adress;
+            ss << std::hex << _i2cAdress;
             ss >> this->i2cAdress;
         }
 
-        void Slave::SetI2cAdress(unsigned int adress) {
-            this->i2cAdress = adress;
+        void Slave::SetI2cAdress(unsigned int _i2cAdress) {
+            this->i2cAdress = _i2cAdress;
+        }
+
+        /**
+         * @param _maxClock
+         */
+        void Slave::SetMaxClock(std::string _maxClock) {
+            this->SetMaxClock(oss::specialFunctions::io::GetClockSpeedFromString(_maxClock));
+        }
+
+        void Slave::SetMaxClock(double _maxClock) {
+            if (_maxClock >= 0) {
+                this->maxClock = _maxClock;
+            }
+        }
+
+        void Slave::SetInterruptGeneration(bool _generateInterrupt) {
+            this->generateInterrupt = _generateInterrupt;
         }
 
     }

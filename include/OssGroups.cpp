@@ -9,9 +9,19 @@
 
 #include "../include/OssGroups.hpp"
 
+#include <tinyxml2.h>
+
 namespace oss {
 
     MainTreeGroup::~MainTreeGroup() {
+    }
+
+    void MainTreeGroup::parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode) {
+        if (xmlNode->ToElement()->Attribute("status") == "enabled") {
+            this->SetState(oss::NodeState::WAITING);
+        } else if (xmlNode->ToElement()->Attribute("status") == "disabled") {
+            this->SetState(oss::NodeState::DISABLE);
+        }
     }
 
     HostGroup::~HostGroup() {

@@ -45,6 +45,8 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp</itemPath>
+    <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include</Elem>
@@ -86,6 +88,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssTree.hpp"
             ex="false"
             tool="3"
@@ -107,6 +114,11 @@
             flavor2="0">
       </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -173,6 +185,11 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssTree.hpp"
             ex="false"
             tool="3"
@@ -194,6 +211,11 @@
             flavor2="0">
       </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp"
             ex="false"
             tool="1"
             flavor2="0">
