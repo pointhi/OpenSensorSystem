@@ -36,5 +36,4 @@ also, the structure isn't finished design
 
     </smb-slave>
 </i2c>
-
 ```
