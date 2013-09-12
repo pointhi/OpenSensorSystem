@@ -24,7 +24,7 @@ namespace oss {
                 std::string suffix = clock.substr(i, clock.length() - i);
 
                 std::stringstream ss;
-                ss << std::hex << clock.substr(0, i);
+                ss << clock.substr(0, i);
                 double clockSpeed = 0;
                 ss >> clockSpeed;
 
