@@ -26,9 +26,7 @@ namespace oss {
 
             TreeNode();
 
-            explicit TreeNode(std::string newName) {
-                this->SetName(newName);
-            }
+            explicit TreeNode(std::string newName);
 
             TreeNode(const TreeNode &orig);
 
@@ -41,6 +39,7 @@ namespace oss {
              */
             virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> childNode) {
                 this->childNodes.insert(childNode);
+                childNode->SetParrentNode(this);
             }
 
             /**
@@ -83,6 +82,24 @@ namespace oss {
             std::tr1::shared_ptr<TreeNode> GetChildNode(const unsigned int id);
 
             /**
+             * @brief Get The Parrent Node of this Element
+             *
+             * @return Pointer to Parrent
+             */
+            const TreeNode * const GetParrentNode() const {
+                return this->parentNode;
+            }
+
+            /**
+             * @brief Set Pointer to Parrent Node
+             *
+             * @param _parentNode
+             */
+            void SetParrentNode(TreeNode *_parentNode) {
+                this->parentNode = _parentNode;
+            }
+
+            /**
              * @brief Set name of the Element
              *
              * @param newName new Name
@@ -105,7 +122,7 @@ namespace oss {
              *
              * @return Number of Child Elements
              */
-            unsigned int size() const {
+            unsigned int GetChildSize() const {
                 this->childNodes.size();
             }
 
@@ -123,6 +140,7 @@ namespace oss {
 
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
+            TreeNode const *parentNode;
 
             std::string name; // Name of Node
         };

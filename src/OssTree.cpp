@@ -18,7 +18,11 @@
 namespace oss {
     namespace tree {
 
-        TreeNode::TreeNode() {
+        TreeNode::TreeNode() : parentNode(NULL) {
+        }
+
+        TreeNode::TreeNode(std::string newName) : parentNode(NULL) {
+            this->SetName(newName);
         }
 
         TreeNode::TreeNode(const TreeNode& orig) {
