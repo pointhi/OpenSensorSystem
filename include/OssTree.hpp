@@ -11,8 +11,10 @@
 #define	OSSTREE_HPP
 
 #include <set>
-#include <string>
 #include <tr1/memory>
+#include <map>
+#include <string>
+#include <sstream>
 
 namespace oss {
 
@@ -138,11 +140,55 @@ namespace oss {
              */
             std::string DrawTree(const unsigned int deep = 100) const;
 
+        public:
+
+            void SetVariable(std::string name, const std::string variable) {
+                this->variables[name] = variable;
+            }
+
+            std::string GetVariable(std::string name) const {
+                if (this->GetConstante(this->variables[name]) == ("")) {
+                    return this->variables[name];
+                } else {
+                    return this->GetConstante(this->variables[name]);
+                }
+            }
+
+            double GetVariableAsDouble(std::string name) const {
+                std::stringstream ss;
+                ss << this->GetVariable(name);
+                double helpVariable;
+                ss >> helpVariable;
+                return helpVariable;
+            }
+
+        public:
+
+            void SetConstante(std::string name, const std::string constant) {
+                this->constants[name] = constant;
+            }
+
+            std::string GetConstante(std::string name) const {
+                if (this->constants.count(name)) {
+                    return this->constants[name];
+                } else {
+                    if (this->GetParrentNode()) {
+                        return this->GetParrentNode()->GetConstante(name);
+                    } else {
+                        return ("");
+                    }
+                }
+            }
+
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
             TreeNode const *parentNode;
 
             std::string name; // Name of Node
+
+
+            mutable std::map<std::string, std::string> variables;
+            mutable std::map<std::string, std::string> constants;
         };
     }
 }
