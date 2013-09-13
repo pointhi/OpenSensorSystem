@@ -81,26 +81,6 @@ namespace oss {
         }
 
         void Host::SetClockSpeed(std::string clock) {
-
-            //            int i = 0;
-            //            for (i = 0; (isdigit(clock.at(i)) || ispunct(clock.at(i))) && i < clock.length(); i++);
-            //
-            //            std::string suffix = clock.substr(i, clock.length() - i);
-            //
-            //            std::stringstream ss;
-            //            ss << std::hex << clock.substr(0, i);
-            //            double helpClock = 0;
-            //            ss >> helpClock;
-            //
-            //            if (suffix == "Hz" || suffix == "") {
-            //                this->clockSpeed = helpClock;
-            //            } else if (suffix == "kHz") {
-            //                this->clockSpeed = helpClock * 1e3;
-            //            } else if (suffix == "MHz") {
-            //                this->clockSpeed = helpClock * 1e6;
-            //            } else if (suffix == "GHz") {
-            //                this->clockSpeed = helpClock * 1e9;
-            //            }
             this->clockSpeed = oss::specialFunctions::io::GetClockSpeedFromString(clock);
         }
 

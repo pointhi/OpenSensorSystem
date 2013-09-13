@@ -13,6 +13,8 @@
 #include "OssGroups.hpp"
 #include "OssRootNode.hpp"
 
+#include "OssSpecialFunctions.hpp"
+
 /// IO
 
 /// I2C

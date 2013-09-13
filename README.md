@@ -10,6 +10,8 @@ A tree based controll-system to work with sensors, based on xml and lua
 ##Needed-Librarys
 
 * tinyxml2
+* lua2.5
+* luabind
 
 ##Simple Programm
 
