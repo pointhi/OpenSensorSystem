@@ -8,8 +8,10 @@
  */
 
 #include "../include/OssGroups.hpp"
+#include "../include/OssTree.hpp"
 
 #include <tinyxml2.h>
+#include <iostream>
 
 namespace oss {
 
@@ -21,6 +23,38 @@ namespace oss {
             this->SetState(oss::NodeState::WAITING);
         } else if (xmlNode->ToElement()->Attribute("status") == "disabled") {
             this->SetState(oss::NodeState::DISABLE);
+        }
+
+        this->parseVariablesFromXml(xmlNode);
+        this->parseConstantsFromXml(xmlNode);
+    }
+
+    void MainTreeGroup::parseVariablesFromXml(tinyxml2::XMLNode * const xmlNode) {
+        for (const tinyxml2::XMLAttribute *xmlHelpAttribut = xmlNode->ToElement()->FirstAttribute()
+                ; xmlHelpAttribut != NULL
+                ; xmlHelpAttribut = xmlHelpAttribut->Next()
+                ) {
+            this->SetVariable(xmlHelpAttribut->Name(), xmlHelpAttribut->Value());
+            //            std::cout << "DEBUG: SetVariable: " << xmlAttribut->Name() << " = " << xmlAttribut->Value() << std::endl;
+        }
+    }
+
+    void MainTreeGroup::parseConstantsFromXml(tinyxml2::XMLNode * const xmlNode) {
+        for (const tinyxml2::XMLElement* xmlMainHelpNode = xmlNode->FirstChildElement("define")
+                ; xmlMainHelpNode != NULL
+                ; xmlMainHelpNode = xmlMainHelpNode->NextSiblingElement("define")
+                ) {
+            for (const tinyxml2::XMLNode* xmlHelpNode = xmlMainHelpNode->FirstChild()
+                    ; xmlHelpNode != NULL
+                    ; xmlHelpNode = xmlHelpNode->NextSibling()
+                    ) {
+                if (xmlHelpNode->ToElement()->FindAttribute("value")) {
+                    this->SetConstante(xmlHelpNode->ToElement()->Name(), xmlHelpNode->ToElement()->FindAttribute("value")->Value());
+                    //                    std::cout << "DEBUG: SetConstant: " << xmlHelpNode->ToElement()->Name() << " = " << xmlHelpNode->ToElement()->FindAttribute("value")->Value() << std::endl;
+                } else {
+                    std::cout << "WARNING: The Constant: \"" << xmlHelpNode->ToElement()->Name() << "\" doesn't have a value" << std::endl;
+                }
+            }
         }
     }
 

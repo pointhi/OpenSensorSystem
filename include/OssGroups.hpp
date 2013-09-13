@@ -53,6 +53,22 @@ namespace oss {
          */
         virtual void parseXml(tinyxml2::XMLNode * const xmlNode) = 0;
 
+        /**
+         * @brief Load all Variables (Attributes from XML-Node) into the Class
+         *
+         * @param xmlNode Node on who would be worked
+         */
+        virtual void parseVariablesFromXml(tinyxml2::XMLNode * const xmlNode);
+
+        /**
+         * @brief Load all Constants from the XML-Node into the Class
+         *
+         * @param xmlNode Node on who would be worked
+         */
+        void parseConstantsFromXml(tinyxml2::XMLNode * const xmlNode);
+
+    public:
+
         void SetState(oss::NodeState::NodeState _state) {
             this->state = _state;
         }
