@@ -22,7 +22,7 @@ namespace oss {
         }
 
         TreeNode::TreeNode(std::string newName) : parentNode(NULL) {
-            this->SetName(newName);
+            this->SetVariable("name", newName);
         }
 
         TreeNode::TreeNode(const TreeNode& orig) {
@@ -37,7 +37,7 @@ namespace oss {
                     ; it++
                     ) {
 
-                if ((*it).get()->GetName() == childName) {
+                if ((*it).get()->GetVariable("name") == childName) {
                     return *it;
                 }
             }
@@ -64,7 +64,7 @@ namespace oss {
             const std::string constChildString = "--";
 
             // Generate the ReturnString
-            std::string returnTree(constTreeString + this->GetName());
+            std::string returnTree(constTreeString + this->GetVariable("name"));
 
             // Get Strings from child-nodes and formate them
             if (deep > 0) {

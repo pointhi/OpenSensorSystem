@@ -21,7 +21,7 @@
 namespace oss {
 
     RootNode::RootNode() {
-        this->SetName("ROOT");
+        this->SetVariable("name", "ROOT");
     }
 
     RootNode::RootNode(const RootNode& orig) {

@@ -29,41 +29,8 @@ namespace oss {
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 
-            /**
-             * @brief Load adress in hex-format
-             *
-             * @param adress Number in Hex-Format
-             *
-             * @todo implementing other input-formats like decimal, binary
-             */
-
-            void SetI2cAdress(std::string _i2cAdress);
-            void SetI2cAdress(unsigned int _i2cAdress);
-
-            unsigned int GetI2cAdress() const {
-                return this->i2cAdress;
-            }
-
-            void SetMaxClock(std::string _maxClock);
-            void SetMaxClock(double _maxClock);
-
-            double GetMaxClock() const {
-                return this->maxClock;
-            }
-
-            void SetInterruptGeneration(bool _generateInterrupt);
-
-            bool GetInterruptGeneration() const {
-                return this->generateInterrupt;
-            }
-
         protected:
             void parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode);
-
-        private:
-            unsigned int i2cAdress;
-            double maxClock;
-            bool generateInterrupt;
         };
     }
 }

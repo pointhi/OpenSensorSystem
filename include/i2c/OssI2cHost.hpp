@@ -30,7 +30,7 @@ namespace oss {
             Host();
 
             explicit Host(std::string newName) {
-                this->SetName(newName);
+                this->SetVariable("name", newName);
             }
 
             Host(const Host &orig);
@@ -47,29 +47,6 @@ namespace oss {
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 
-            void SetDevicePath(std::string path);
-
-            /**
-             * @brief Convert string to clock-speed
-             *
-             * @param clock
-             *
-             * @bug comma doesn't func
-             */
-            void SetClockSpeed(std::string clock);
-            void SetClockSpeed(double clock);
-
-            std::string GetDevicePath() const {
-                return this->devicePath;
-            }
-
-            double GetClockSpeed() const {
-                return this->clockSpeed;
-            }
-
-        private:
-            std::string devicePath;
-            double clockSpeed;
         };
     }
 }

@@ -21,21 +21,11 @@
 namespace oss {
     namespace i2c {
 
-        /**
-         *
-         */
-
-        Slave::Slave()
-        : i2cAdress(0)
-        , maxClock(0)
-        , generateInterrupt(false) {
+        Slave::Slave() {
         }
 
-        Slave::Slave(std::string newName)
-        : i2cAdress(0)
-        , maxClock(0)
-        , generateInterrupt(false) {
-            this->SetName(newName);
+        Slave::Slave(std::string newName) {
+            this->SetVariable("name", newName);
         }
 
         Slave::Slave(const Slave& orig) {
@@ -54,43 +44,6 @@ namespace oss {
         }
 
         void Slave::parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode) {
-            if (xmlNode->ToElement()->Attribute("name")) {
-                this->SetName(xmlNode->ToElement()->Attribute("name"));
-            }
-            if (xmlNode->ToElement()->Attribute("adress")) {
-                this->SetI2cAdress(xmlNode->ToElement()->Attribute("adress"));
-            }
-            if (xmlNode->ToElement()->Attribute("maxclock=")) {
-                this->SetMaxClock(xmlNode->ToElement()->Attribute("maxclock="));
-            }
-
-        }
-
-        void Slave::SetI2cAdress(std::string _i2cAdress) {
-            std::stringstream ss;
-            ss << std::hex << _i2cAdress;
-            ss >> this->i2cAdress;
-        }
-
-        void Slave::SetI2cAdress(unsigned int _i2cAdress) {
-            this->i2cAdress = _i2cAdress;
-        }
-
-        /**
-         * @param _maxClock
-         */
-        void Slave::SetMaxClock(std::string _maxClock) {
-            this->SetMaxClock(oss::specialFunctions::io::GetClockSpeedFromString(_maxClock));
-        }
-
-        void Slave::SetMaxClock(double _maxClock) {
-            if (_maxClock >= 0) {
-                this->maxClock = _maxClock;
-            }
-        }
-
-        void Slave::SetInterruptGeneration(bool _generateInterrupt) {
-            this->generateInterrupt = _generateInterrupt;
         }
 
     }

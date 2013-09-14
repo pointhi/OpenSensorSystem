@@ -101,24 +101,6 @@ namespace oss {
             }
 
             /**
-             * @brief Set name of the Element
-             *
-             * @param newName new Name
-             */
-            void SetName(const std::string _name) {
-                this->name = _name;
-            }
-
-            /**
-             * @brief Get name of the Element
-             *
-             * @return Name of Element
-             */
-            std::string GetName(void) const {
-                return this->name;
-            }
-
-            /**
              * @brief Return number of Child Elements
              *
              * @return Number of Child Elements
@@ -193,9 +175,6 @@ namespace oss {
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
             TreeNode const *parentNode;
-
-            std::string name; // Name of Node
-
 
             mutable std::map<std::string, std::string> variables;
             mutable std::map<std::string, std::string> constants;

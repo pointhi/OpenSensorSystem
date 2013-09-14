@@ -39,16 +39,6 @@ namespace oss {
             // Check if node is in correct DOM-Namespace
             if (std::string(xmlNode->ToElement()->Name()) == std::string("i2c")) {
 
-                if (xmlNode->ToElement()->Attribute("name")) {
-                    this->SetName(xmlNode->ToElement()->Attribute("name"));
-                }
-                if (xmlNode->ToElement()->Attribute("device")) {
-                    this->SetDevicePath(xmlNode->ToElement()->Attribute("device"));
-                }
-                if (xmlNode->ToElement()->Attribute("clock")) {
-                    this->SetClockSpeed(xmlNode->ToElement()->Attribute("clock"));
-                }
-
                 std::string childName;
 
                 for (tinyxml2::XMLElement* helpElement = xmlNode->FirstChildElement()
@@ -73,22 +63,6 @@ namespace oss {
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
                 std::clog << "WARNING: <i2c> isn't parent-node, ignoring child elements and values" << std::endl;
-            }
-        }
-
-        void Host::SetDevicePath(std::string path) {
-            this->devicePath = path;
-        }
-
-        void Host::SetClockSpeed(std::string clock) {
-            this->clockSpeed = oss::specialFunctions::io::GetClockSpeedFromString(clock);
-        }
-
-        void Host::SetClockSpeed(double clock) {
-            if (clock >= 0) {
-                this->clockSpeed = clock;
-            } else {
-                std::clog << "WARNING: " << clock << "can't be the speed of the bus system" << std::endl;
             }
         }
 

@@ -24,7 +24,7 @@ namespace oss {
         }
 
         SmbSlave::SmbSlave(std::string newName) {
-            this->SetName(newName);
+            this->SetVariable("name", newName);
         }
 
         SmbSlave::SmbSlave(const SmbSlave& orig) {
