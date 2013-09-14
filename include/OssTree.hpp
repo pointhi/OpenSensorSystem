@@ -115,11 +115,13 @@ namespace oss {
              * @brief Generate a graphical output of the Node and all Child-Nodes
              *
              * @param deep The maximum output-deep befor the function would stop
+             * @param treeString Define the Characters, which would be drawn before the name of the element
+             * @param treeChildString Define the Characters, which would be drawn at the start, when the element is deeper than the start-node
              * @return A string who contain the full tree-network
              *
              * @warning This Function is recursiv, in worst case the function go so long like deep != 0
              */
-            std::string DrawTree(const unsigned int deep = 100, const std::string constTreeString = "|- ", const std::string constChildString = "  ") const;
+            std::string DrawTree(const unsigned int deep = 100, const std::string treeString = "|- ", const std::string treeChildString = "  ") const;
 
         public:
 

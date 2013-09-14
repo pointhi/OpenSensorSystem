@@ -55,10 +55,10 @@ namespace oss {
             throw "Id to high";
         }
 
-        std::string TreeNode::DrawTree(const unsigned int deep, const std::string constTreeString, const std::string constChildString) const {
+        std::string TreeNode::DrawTree(const unsigned int deep, const std::string treeString, const std::string treeChildString) const {
 
             // Generate the ReturnString
-            std::string returnTree(constTreeString + this->GetVariable("name"));
+            std::string returnTree(treeString + this->GetVariable("name"));
 
             // Get Strings from child-nodes and formate them
             if (deep > 0) {
@@ -70,14 +70,14 @@ namespace oss {
                         ) {
 
                     childTree.clear();
-                    childTree = (*it)->DrawTree(deep - 1, constTreeString, constChildString);
+                    childTree = (*it)->DrawTree(deep - 1, treeString, treeChildString);
 
                     // Draw a child-string in every row of a child Node
-                    for (unsigned int i = childTree.find(constTreeString)
+                    for (unsigned int i = childTree.find(treeString)
                             ; i < childTree.size()
-                            ; i = childTree.find(constTreeString, i + constChildString.size() + 1)
+                            ; i = childTree.find(treeString, i + treeChildString.size() + 1)
                             ) {
-                        childTree.insert(i, constChildString);
+                        childTree.insert(i, treeChildString);
                     }
 
                     returnTree += "\n" + childTree;
