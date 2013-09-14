@@ -10,7 +10,7 @@
 #include <set>
 #include <string>
 #include <tr1/memory>
-
+#include <sstream>
 #include <iostream>
 
 #include "../include/OssTree.hpp"
@@ -92,5 +92,38 @@ namespace oss {
 
             return returnTree;
         }
+
+        std::string TreeNode::GetVariable(std::string name) const {
+            if (this->GetConstante(this->variables[name]) == ("")) {
+                return this->variables[name];
+            } else {
+                return this->GetConstante(this->variables[name]);
+            }
+        }
+
+        double TreeNode::GetVariableAsDouble(std::string name) const {
+            std::stringstream ss;
+            ss << this->GetVariable(name);
+            double helpVariable;
+            ss >> helpVariable;
+            return helpVariable;
+        }
+
+        void TreeNode::SetConstante(std::string name, const std::string constant) {
+            this->constants[name] = constant;
+        }
+
+        std::string TreeNode::GetConstante(std::string name) const {
+            if (this->constants.count(name)) {
+                return this->constants[name];
+            } else {
+                if (this->GetParrentNode()) {
+                    return this->GetParrentNode()->GetConstante(name);
+                } else {
+                    return ("");
+                }
+            }
+        }
+
     }
 }

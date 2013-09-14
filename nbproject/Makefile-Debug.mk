@@ -35,13 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/905750475/OssGroups.o \
 	${OBJECTDIR}/_ext/1288313479/OssRootNode.o \
 	${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o \
 	${OBJECTDIR}/_ext/1288313479/OssTree.o \
 	${OBJECTDIR}/_ext/1303538962/I2cHost.o \
 	${OBJECTDIR}/_ext/1303538962/I2cSlave.o \
-	${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o
+	${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o \
+	${OBJECTDIR}/src/OssGroups.o
 
 
 # C Compiler Flags
@@ -67,11 +67,6 @@ LDLIBSOPTIONS=-ltinyxml2
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenSensorSystem.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenSensorSystem.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
-
-${OBJECTDIR}/_ext/905750475/OssGroups.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/905750475
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/905750475/OssGroups.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp
 
 ${OBJECTDIR}/_ext/1288313479/OssRootNode.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479
@@ -102,6 +97,11 @@ ${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o: /home/thomas/Dokumente/Projekte/robo
 	${MKDIR} -p ${OBJECTDIR}/_ext/1303538962
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp
+
+${OBJECTDIR}/src/OssGroups.o: src/OssGroups.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssGroups.o src/OssGroups.cpp
 
 # Subprojects
 .build-subprojects:

@@ -14,7 +14,6 @@
 #include <tr1/memory>
 #include <map>
 #include <string>
-#include <sstream>
 
 namespace oss {
 
@@ -142,43 +141,54 @@ namespace oss {
 
         public:
 
+            /**
+             * @brief Set The Value of a Variable
+             * @note When The Variable not exist, it would generate a new one
+             *
+             * @param name Name of the Variable
+             * @param variable Value of the variable
+             */
             void SetVariable(std::string name, const std::string variable) {
                 this->variables[name] = variable;
             }
 
-            std::string GetVariable(std::string name) const {
-                if (this->GetConstante(this->variables[name]) == ("")) {
-                    return this->variables[name];
-                } else {
-                    return this->GetConstante(this->variables[name]);
-                }
-            }
+            /**
+             * @brief Get a Variable
+             * @note When the Value of the variable contain a string, which match with an constant, it would repleaced with it
+             *
+             * @param name Name of the Variable
+             * @return Value of the Variable
+             */
+            std::string GetVariable(std::string name) const;
 
-            double GetVariableAsDouble(std::string name) const {
-                std::stringstream ss;
-                ss << this->GetVariable(name);
-                double helpVariable;
-                ss >> helpVariable;
-                return helpVariable;
-            }
+            /**
+             * @brief Get a Variable as Double
+             * @note When the Value of the variable contain a string, which match with an constant, it would repleaced with it
+             *
+             * @param name Name of the Variable
+             * @return Value of the Variable as Double
+             */
+            double GetVariableAsDouble(std::string name) const;
 
         public:
 
-            void SetConstante(std::string name, const std::string constant) {
-                this->constants[name] = constant;
-            }
+            /**
+             * @brief Set The Value of a Constant
+             * @note When The Constant not exist, it would generate a new one
+             *
+             * @param name Name of the Constant
+             * @param constant Value of the Constant
+             */
+            void SetConstante(std::string name, const std::string constant);
 
-            std::string GetConstante(std::string name) const {
-                if (this->constants.count(name)) {
-                    return this->constants[name];
-                } else {
-                    if (this->GetParrentNode()) {
-                        return this->GetParrentNode()->GetConstante(name);
-                    } else {
-                        return ("");
-                    }
-                }
-            }
+            /**
+             * @brief Get a Constant
+             * @warning This is a recursiv function, which would call all parrent nodes until matching or entering the root node
+             *
+             * @param name Name of the Constant
+             * @return Value of the Constant, "" when no Constant exists
+             */
+            std::string GetConstante(std::string name) const;
 
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;

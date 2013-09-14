@@ -31,7 +31,7 @@
           <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp</itemPath>
           <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp</itemPath>
         </logicalFolder>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp</itemPath>
+        <itemPath>src/OssGroups.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp</itemPath>
@@ -74,11 +74,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp"
             ex="false"
             tool="3"
@@ -145,6 +140,8 @@
             flavor2="0">
       </item>
       <item path="README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/OssGroups.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -173,11 +170,6 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp"
             ex="false"
             tool="3"
@@ -244,6 +236,8 @@
             flavor2="0">
       </item>
       <item path="README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/OssGroups.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
