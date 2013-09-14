@@ -119,7 +119,7 @@ namespace oss {
              *
              * @warning This Function is recursiv, in worst case the function go so long like deep != 0
              */
-            std::string DrawTree(const unsigned int deep = 100) const;
+            std::string DrawTree(const unsigned int deep = 100, const std::string constTreeString = "|- ", const std::string constChildString = "  ") const;
 
         public:
 
