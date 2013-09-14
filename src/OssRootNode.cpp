@@ -67,9 +67,8 @@ namespace oss {
 
         switch (doc.LoadFile(filePath.c_str())) {
             case tinyxml2::XML_NO_ERROR:
-                tinyxml2::XMLNode* HelpNode = doc.FirstChildElement("root");
-                if (HelpNode) {
-                    for (
+                if (doc.FirstChildElement("root")) {
+                    for (tinyxml2::XMLNode* HelpNode = doc.FirstChildElement("root")
                             ; HelpNode != NULL
                             ; HelpNode = HelpNode->NextSibling()
                             ) {
