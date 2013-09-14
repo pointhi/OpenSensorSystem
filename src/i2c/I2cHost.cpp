@@ -51,22 +51,22 @@ namespace oss {
 
                 std::string childName;
 
-                for (tinyxml2::XMLNode* HelpNode = xmlNode->FirstChild()
-                        ; HelpNode != NULL
-                        ; HelpNode = HelpNode->NextSibling()
+                for (tinyxml2::XMLElement* helpElement = xmlNode->FirstChildElement()
+                        ; helpElement != NULL
+                        ; helpElement = helpElement->NextSiblingElement()
                         ) {
 
                     childName.clear();
-                    childName = HelpNode->ToElement()->Name();
+                    childName = helpElement->Name();
 
                     if (childName == "i2c-slave") {
                         std::tr1::shared_ptr<oss::i2c::I2cGroup> newChildElement(new oss::i2c::Slave);
                         this->AddChildNode(newChildElement);
-                        newChildElement->parseXml(HelpNode);
+                        newChildElement->parseXml(helpElement);
                     } else if (childName == "smb-slave") {
                         std::tr1::shared_ptr<oss::i2c::I2cGroup> newChildElement(new oss::i2c::SmbSlave);
                         this->AddChildNode(newChildElement);
-                        newChildElement->parseXml(HelpNode);
+                        newChildElement->parseXml(helpElement);
                     }
                 }
 

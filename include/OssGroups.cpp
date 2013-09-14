@@ -40,19 +40,19 @@ namespace oss {
     }
 
     void MainTreeGroup::parseConstantsFromXml(tinyxml2::XMLNode * const xmlNode) {
-        for (const tinyxml2::XMLElement* xmlMainHelpNode = xmlNode->FirstChildElement("define")
-                ; xmlMainHelpNode != NULL
-                ; xmlMainHelpNode = xmlMainHelpNode->NextSiblingElement("define")
+        for (const tinyxml2::XMLElement* xmlMainHelpElement = xmlNode->FirstChildElement("define")
+                ; xmlMainHelpElement != NULL
+                ; xmlMainHelpElement = xmlMainHelpElement->NextSiblingElement("define")
                 ) {
-            for (const tinyxml2::XMLNode* xmlHelpNode = xmlMainHelpNode->FirstChild()
-                    ; xmlHelpNode != NULL
-                    ; xmlHelpNode = xmlHelpNode->NextSibling()
+            for (const tinyxml2::XMLElement* xmlHelpElement = xmlMainHelpElement->FirstChildElement()
+                    ; xmlHelpElement != NULL
+                    ; xmlHelpElement = xmlHelpElement->NextSiblingElement()
                     ) {
-                if (xmlHelpNode->ToElement()->FindAttribute("value")) {
-                    this->SetConstante(xmlHelpNode->ToElement()->Name(), xmlHelpNode->ToElement()->FindAttribute("value")->Value());
-                    //                    std::cout << "DEBUG: SetConstant: " << xmlHelpNode->ToElement()->Name() << " = " << xmlHelpNode->ToElement()->FindAttribute("value")->Value() << std::endl;
+                if (xmlHelpElement->FindAttribute("value")) {
+                    this->SetConstante(xmlHelpElement->Name(), xmlHelpElement->FindAttribute("value")->Value());
+                    //                    std::cout << "DEBUG: SetConstant: " << xmlHelpNode->Name() << " = " << xmlHelpNode->FindAttribute("value")->Value() << std::endl;
                 } else {
-                    std::cout << "WARNING: The Constant: \"" << xmlHelpNode->ToElement()->Name() << "\" doesn't have a value" << std::endl;
+                    std::cout << "WARNING: The Constant: \"" << xmlHelpElement->Name() << "\" doesn't have a value" << std::endl;
                 }
             }
         }

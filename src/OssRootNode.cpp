@@ -35,20 +35,19 @@ namespace oss {
         std::string childName;
 
         if (xmlNode) {
-
-            for (tinyxml2::XMLNode* HelpNode = xmlNode->ToElement()->FirstChild()
-                    ; HelpNode != NULL
-                    ; HelpNode = HelpNode->NextSibling()
+            for (tinyxml2::XMLElement* helpElement = xmlNode->FirstChildElement()
+                    ; helpElement != NULL
+                    ; helpElement = helpElement->NextSiblingElement()
                     ) {
 
                 childName.clear();
-                childName = HelpNode->ToElement()->Name();
+                childName = helpElement->ToElement()->Name();
 
                 if (childName == "io") {
                 } else if (childName == "i2c") {
                     std::tr1::shared_ptr<oss::HostGroup> newChildElement(new oss::i2c::Host);
                     this->AddChildNode(newChildElement);
-                    newChildElement->parseXml(HelpNode);
+                    newChildElement->parseXml(helpElement);
                 } else if (childName == "can") {
                 } else if (childName == "spi") {
                 } else if (childName == "uart") {
@@ -68,11 +67,11 @@ namespace oss {
         switch (doc.LoadFile(filePath.c_str())) {
             case tinyxml2::XML_NO_ERROR:
                 if (doc.FirstChildElement("root")) {
-                    for (tinyxml2::XMLNode* HelpNode = doc.FirstChildElement("root")
-                            ; HelpNode != NULL
-                            ; HelpNode = HelpNode->NextSibling()
+                    for (tinyxml2::XMLElement* helpElement = doc.FirstChildElement("root")
+                            ; helpElement != NULL
+                            ; helpElement = helpElement->NextSiblingElement("root")
                             ) {
-                        this->parseXml(HelpNode);
+                        this->parseXml(helpElement);
                     }
                 } else {
                     std::cerr << "ERROR: XML-File doesn't contain a <root> element!" << std::endl;
