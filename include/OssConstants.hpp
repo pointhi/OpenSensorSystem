@@ -14,6 +14,8 @@ namespace oss {
     namespace constants {
         namespace variableNames {
             static const std::string ObjectName("name");
+        }
+        namespace xmlElementNames {
             static const std::string RootElementName("root");
             namespace hostElements {
                 static const std::string I2c("i2c");

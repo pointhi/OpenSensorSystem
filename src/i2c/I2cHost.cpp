@@ -42,7 +42,7 @@ namespace oss {
         void Host::parseXml(tinyxml2::XMLNode * const xmlNode) {
 
             // Check if node is in correct DOM-Namespace
-            if (std::string(xmlNode->ToElement()->Name()) == oss::constants::variableNames::hostElements::I2c) {
+            if (std::string(xmlNode->ToElement()->Name()) == oss::constants::xmlElementNames::hostElements::I2c) {
 
                 std::string childName;
 
@@ -54,11 +54,11 @@ namespace oss {
                     childName.clear();
                     childName = helpElement->Name();
 
-                    if (childName == oss::constants::variableNames::i2cElements::I2cSlave) {
+                    if (childName == oss::constants::xmlElementNames::i2cElements::I2cSlave) {
                         std::tr1::shared_ptr<oss::i2c::I2cGroup> newChildElement(new oss::i2c::Slave);
                         this->AddChildNode(newChildElement);
                         newChildElement->parseXml(helpElement);
-                    } else if (childName == oss::constants::variableNames::i2cElements::SmbSlave) {
+                    } else if (childName == oss::constants::xmlElementNames::i2cElements::SmbSlave) {
                         std::tr1::shared_ptr<oss::i2c::I2cGroup> newChildElement(new oss::i2c::SmbSlave);
                         this->AddChildNode(newChildElement);
                         newChildElement->parseXml(helpElement);
@@ -67,7 +67,7 @@ namespace oss {
 
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
-                std::clog << "WARNING: <" << oss::constants::variableNames::hostElements::I2c << "> isn't parent-node, ignoring child elements and values" << std::endl;
+                std::clog << "WARNING: <" << oss::constants::xmlElementNames::hostElements::I2c << "> isn't parent-node, ignoring child elements and values" << std::endl;
             }
         }
 

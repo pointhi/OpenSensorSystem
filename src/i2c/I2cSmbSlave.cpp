@@ -35,11 +35,11 @@ namespace oss {
         }
 
         void SmbSlave::parseXml(tinyxml2::XMLNode * const xmlNode) {
-            if (std::string(xmlNode->ToElement()->Name()) == oss::constants::variableNames::i2cElements::SmbSlave) {
+            if (std::string(xmlNode->ToElement()->Name()) == oss::constants::xmlElementNames::i2cElements::SmbSlave) {
                 this->parseMainXmlParameter(xmlNode);
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
-                std::clog << "WARNING: <" << oss::constants::variableNames::i2cElements::SmbSlave << "> isn't parent-node, ignoring child elements and values" << std::endl;
+                std::clog << "WARNING: <" << oss::constants::xmlElementNames::i2cElements::SmbSlave << "> isn't parent-node, ignoring child elements and values" << std::endl;
             }
         }
 
