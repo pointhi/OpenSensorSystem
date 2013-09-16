@@ -29,9 +29,7 @@ namespace oss {
 
             Host();
 
-            explicit Host(std::string newName) {
-                this->SetVariable("name", newName);
-            }
+            explicit Host(std::string newName);
 
             Host(const Host &orig);
 

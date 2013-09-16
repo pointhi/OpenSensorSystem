@@ -21,11 +21,16 @@
 #include "../../include/i2c/OssI2cSlave.hpp"
 #include "../../include/i2c/OssI2cSmbSlave.hpp"
 #include "../../include/OssSpecialFunctions.hpp"
+#include "../../include/OssConstants.hpp"
 
 namespace oss {
     namespace i2c {
 
         Host::Host() {
+        }
+
+        Host::Host(std::string newName) {
+            this->SetVariable(oss::constants::variableNames::ObjectName, newName);
         }
 
         Host::Host(const Host& orig) {
@@ -37,7 +42,7 @@ namespace oss {
         void Host::parseXml(tinyxml2::XMLNode * const xmlNode) {
 
             // Check if node is in correct DOM-Namespace
-            if (std::string(xmlNode->ToElement()->Name()) == std::string("i2c")) {
+            if (std::string(xmlNode->ToElement()->Name()) == oss::constants::variableNames::hostElements::I2c) {
 
                 std::string childName;
 
@@ -49,11 +54,11 @@ namespace oss {
                     childName.clear();
                     childName = helpElement->Name();
 
-                    if (childName == "i2c-slave") {
+                    if (childName == oss::constants::variableNames::i2cElements::I2cSlave) {
                         std::tr1::shared_ptr<oss::i2c::I2cGroup> newChildElement(new oss::i2c::Slave);
                         this->AddChildNode(newChildElement);
                         newChildElement->parseXml(helpElement);
-                    } else if (childName == "smb-slave") {
+                    } else if (childName == oss::constants::variableNames::i2cElements::SmbSlave) {
                         std::tr1::shared_ptr<oss::i2c::I2cGroup> newChildElement(new oss::i2c::SmbSlave);
                         this->AddChildNode(newChildElement);
                         newChildElement->parseXml(helpElement);
@@ -62,7 +67,7 @@ namespace oss {
 
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
-                std::clog << "WARNING: <i2c> isn't parent-node, ignoring child elements and values" << std::endl;
+                std::clog << "WARNING: <" << oss::constants::variableNames::hostElements::I2c << "> isn't parent-node, ignoring child elements and values" << std::endl;
             }
         }
 

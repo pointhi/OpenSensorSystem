@@ -14,6 +14,7 @@
 #include "OssRootNode.hpp"
 
 #include "OssSpecialFunctions.hpp"
+#include "OssConstants.hpp"
 
 /// IO
 

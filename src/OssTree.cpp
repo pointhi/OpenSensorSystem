@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "../include/OssTree.hpp"
+#include "../include/OssConstants.hpp"
 
 namespace oss {
     namespace tree {
@@ -22,7 +23,7 @@ namespace oss {
         }
 
         TreeNode::TreeNode(std::string newName) : parentNode(NULL) {
-            this->SetVariable("name", newName);
+            this->SetVariable(oss::constants::variableNames::ObjectName, newName);
         }
 
         TreeNode::TreeNode(const TreeNode& orig) {
@@ -37,7 +38,7 @@ namespace oss {
                     ; it++
                     ) {
 
-                if ((*it).get()->GetVariable("name") == childName) {
+                if ((*it).get()->GetVariable(oss::constants::variableNames::ObjectName) == childName) {
                     return *it;
                 }
             }
@@ -58,7 +59,7 @@ namespace oss {
         std::string TreeNode::DrawTree(const unsigned int deep, const std::string treeString, const std::string treeChildString) const {
 
             // Generate the ReturnString
-            std::string returnTree(treeString + this->GetVariable("name"));
+            std::string returnTree(treeString + this->GetVariable(oss::constants::variableNames::ObjectName));
 
             // Get Strings from child-nodes and formate them
             if (deep > 0) {

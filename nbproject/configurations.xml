@@ -11,6 +11,7 @@
           <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSmbSlave.hpp</itemPath>
         </logicalFolder>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp</itemPath>
+        <itemPath>include/OssConstants.hpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssRootNode.hpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp</itemPath>
@@ -141,6 +142,8 @@
       </item>
       <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/OssConstants.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/OssGroups.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -236,6 +239,8 @@
             flavor2="0">
       </item>
       <item path="README.md" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/OssConstants.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/OssGroups.cpp" ex="false" tool="1" flavor2="0">
       </item>

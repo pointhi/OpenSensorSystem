@@ -16,6 +16,7 @@
 #include "../../include/OssTree.hpp"
 #include "../../include/i2c/OssI2cSlave.hpp"
 #include "../../include/i2c/OssI2cSmbSlave.hpp"
+#include "../../include/OssConstants.hpp"
 
 namespace oss {
     namespace i2c {
@@ -24,7 +25,7 @@ namespace oss {
         }
 
         SmbSlave::SmbSlave(std::string newName) {
-            this->SetVariable("name", newName);
+            this->SetVariable(oss::constants::variableNames::ObjectName, newName);
         }
 
         SmbSlave::SmbSlave(const SmbSlave& orig) {
@@ -34,11 +35,11 @@ namespace oss {
         }
 
         void SmbSlave::parseXml(tinyxml2::XMLNode * const xmlNode) {
-            if (std::string(xmlNode->ToElement()->Name()) == std::string("smb-slave")) {
+            if (std::string(xmlNode->ToElement()->Name()) == oss::constants::variableNames::i2cElements::SmbSlave) {
                 this->parseMainXmlParameter(xmlNode);
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
-                std::clog << "WARNING: <smb-slave> isn't parent-node, ignoring child elements and values" << std::endl;
+                std::clog << "WARNING: <" << oss::constants::variableNames::i2cElements::SmbSlave << "> isn't parent-node, ignoring child elements and values" << std::endl;
             }
         }
 
