@@ -96,4 +96,19 @@ namespace oss {
         EthernetGroup::~EthernetGroup() {
         }
     }
+
+    namespace lua {
+
+        LuaGroup::~LuaGroup() {
+        }
+
+        LuaSensorScriptGroup::~LuaSensorScriptGroup() {
+        }
+    }
+
+    namespace sensor {
+
+        SensorGroup::~SensorGroup() {
+        }
+    }
 }

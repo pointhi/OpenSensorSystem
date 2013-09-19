@@ -158,25 +158,33 @@ namespace oss {
         };
     }
 
+    namespace lua {
+
+        /**
+         * @brief General Class which are the parent for all Lua Classes
+         */
+        class LuaGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~LuaGroup() = 0;
+        };
+
+        /**
+         * @brief General Class which are the parent for all General-Lua-Script Classes
+         */
+        class LuaSensorScriptGroup : public oss::lua::LuaGroup {
+        public:
+            virtual ~LuaSensorScriptGroup() = 0;
+        };
+    }
+
     namespace sensor {
 
         /**
          * @brief General Class in which are the parent for all Sensor Classes
          */
-        class SensorGroup : public oss::MainTreeGroup {
+        class SensorGroup : public oss::lua::LuaSensorScriptGroup {
         public:
             virtual ~SensorGroup() = 0;
-        };
-    }
-
-    namespace lua {
-
-        /**
-         * @brief General Class which are the parent for all Lua-Sensor-Script Classes
-         */
-        class LuaSensorScriptGroup : public oss::sensor::SensorGroup {
-        public:
-            virtual ~LuaSensorScriptGroup() = 0;
         };
     }
 }
