@@ -26,6 +26,14 @@ namespace oss {
             SmbSlave(const SmbSlave &orig);
             virtual ~SmbSlave();
 
+            virtual void AddChildNode(std::tr1::shared_ptr<oss::sensor::SensorGroup> childNode) {
+                this->TreeNode::AddChildNode(childNode);
+            }
+
+            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::sensor::SensorGroup> childNode) {
+                this->TreeNode::RemoveChildNode(childNode);
+            }
+
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 
         private:
