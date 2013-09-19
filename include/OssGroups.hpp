@@ -157,6 +157,28 @@ namespace oss {
             virtual ~EthernetGroup() = 0;
         };
     }
+
+    namespace sensor {
+
+        /**
+         * @brief General Class in which are the parent for all Sensor Classes
+         */
+        class SensorGroup : public oss::MainTreeGroup {
+        public:
+            virtual ~SensorGroup() = 0;
+        };
+    }
+
+    namespace lua {
+
+        /**
+         * @brief General Class which are the parent for all Lua-Sensor-Script Classes
+         */
+        class LuaSensorScriptGroup : public oss::sensor::SensorGroup {
+        public:
+            virtual ~LuaSensorScriptGroup() = 0;
+        };
+    }
 }
 
 #endif	/* OSSHOSTGROUP_HPP */
