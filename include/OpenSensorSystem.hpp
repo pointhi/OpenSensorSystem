@@ -16,6 +16,9 @@
 #include "OssSpecialFunctions.hpp"
 #include "OssConstants.hpp"
 
+/// LUA
+#include "lua/OssLuaSensorScript.hpp"
+
 /// IO
 
 /// I2C
