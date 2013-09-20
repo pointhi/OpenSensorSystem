@@ -187,6 +187,16 @@ namespace oss {
             virtual ~SensorGroup() = 0;
         };
     }
+
+    /**
+     * @brief Help Class for Classes witch wouldn't become child-classes
+     */
+    class EndTreeNode : public oss::MainTreeGroup {
+    private:
+        EndTreeNode();
+        EndTreeNode(const EndTreeNode& orig);
+        virtual ~EndTreeNode() = 0;
+    };
 }
 
 #endif	/* OSSHOSTGROUP_HPP */

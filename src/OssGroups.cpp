@@ -111,4 +111,13 @@ namespace oss {
         SensorGroup::~SensorGroup() {
         }
     }
+
+    EndTreeNode::EndTreeNode() {
+    }
+
+    EndTreeNode::EndTreeNode(const EndTreeNode& orig) {
+    }
+
+    EndTreeNode::~EndTreeNode() {
+    }
 }
