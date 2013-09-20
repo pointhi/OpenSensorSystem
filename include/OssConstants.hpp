@@ -14,6 +14,9 @@ namespace oss {
     namespace constants {
         namespace variableNames {
             static const std::string ObjectName("name");
+            namespace variousVariables {
+                static const std::string ConstantVariableValue("value");
+            }
         }
         namespace xmlElementNames {
             static const std::string RootElementName("root");
@@ -28,6 +31,15 @@ namespace oss {
             namespace i2cElements {
                 static const std::string I2cSlave("i2c-slave");
                 static const std::string SmbSlave("smb-slave");
+            }
+            namespace luaElements {
+                static const std::string LuaScript("lua-script");
+            }
+            namespace sensorElements {
+                static const std::string GeneralSensor("sensor");
+            }
+            namespace variousElements {
+                static const std::string Constants("define");
             }
         }
     }

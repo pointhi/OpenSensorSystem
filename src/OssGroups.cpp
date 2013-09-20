@@ -9,6 +9,7 @@
 
 #include "../include/OssGroups.hpp"
 #include "../include/OssTree.hpp"
+#include "../include/OssConstants.hpp"
 
 #include <tinyxml2.h>
 #include <iostream>
@@ -40,17 +41,17 @@ namespace oss {
     }
 
     void MainTreeGroup::parseConstantsFromXml(tinyxml2::XMLNode * const xmlNode) {
-        for (const tinyxml2::XMLElement* xmlMainHelpElement = xmlNode->FirstChildElement("define")
+        for (const tinyxml2::XMLElement* xmlMainHelpElement = xmlNode->FirstChildElement(oss::constants::xmlElementNames::variousElements::Constants.c_str())
                 ; xmlMainHelpElement != NULL
-                ; xmlMainHelpElement = xmlMainHelpElement->NextSiblingElement("define")
+                ; xmlMainHelpElement = xmlMainHelpElement->NextSiblingElement(oss::constants::xmlElementNames::variousElements::Constants.c_str())
                 ) {
             for (const tinyxml2::XMLElement* xmlHelpElement = xmlMainHelpElement->FirstChildElement()
                     ; xmlHelpElement != NULL
                     ; xmlHelpElement = xmlHelpElement->NextSiblingElement()
                     ) {
-                if (xmlHelpElement->FindAttribute("value")) {
-                    this->SetConstante(xmlHelpElement->Name(), xmlHelpElement->FindAttribute("value")->Value());
-                    //                    std::cout << "DEBUG: SetConstant: " << xmlHelpNode->Name() << " = " << xmlHelpNode->FindAttribute("value")->Value() << std::endl;
+                if (xmlHelpElement->FindAttribute(oss::constants::variableNames::variousVariables::ConstantVariableValue.c_str())) {
+                    this->SetConstante(xmlHelpElement->Name(), xmlHelpElement->FindAttribute(oss::constants::variableNames::variousVariables::ConstantVariableValue.c_str())->Value());
+                    //                    std::cout << "DEBUG: SetConstant: " << xmlHelpNode->Name() << " = " << xmlHelpNode->FindAttribute(oss::constants::variableNames::variousVariables::ConstantVariableValue.c_str())->Value() << std::endl;
                 } else {
                     std::cout << "WARNING: The Constant: \"" << xmlHelpElement->Name() << "\" doesn't have a value" << std::endl;
                 }
