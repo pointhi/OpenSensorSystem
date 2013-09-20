@@ -42,7 +42,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1303538962/I2cSlave.o \
 	${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o \
 	${OBJECTDIR}/src/OssGroups.o \
-	${OBJECTDIR}/src/lua/LuaSensorScript.o
+	${OBJECTDIR}/src/lua/LuaSensorScript.o \
+	${OBJECTDIR}/src/sensor/OssSensor.o
 
 
 # C Compiler Flags
@@ -108,6 +109,11 @@ ${OBJECTDIR}/src/lua/LuaSensorScript.o: src/lua/LuaSensorScript.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/lua
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/lua/LuaSensorScript.o src/lua/LuaSensorScript.cpp
+
+${OBJECTDIR}/src/sensor/OssSensor.o: src/sensor/OssSensor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sensor
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sensor/OssSensor.o src/sensor/OssSensor.cpp
 
 # Subprojects
 .build-subprojects:

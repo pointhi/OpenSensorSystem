@@ -19,6 +19,9 @@
 /// LUA
 #include "lua/OssLuaSensorScript.hpp"
 
+/// Sensor
+#include "sensor/OssSensor.hpp"
+
 /// IO
 
 /// I2C
