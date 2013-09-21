@@ -13,7 +13,7 @@
 namespace oss {
     namespace lua {
 
-        class LuaSensorScript : public oss::lua::LuaSensorScriptGroup {
+        class LuaSensorScript : public oss::lua::LuaGroup {
         public:
             LuaSensorScript();
             LuaSensorScript(const LuaSensorScript& orig);
@@ -21,11 +21,11 @@ namespace oss {
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 
-            virtual void AddChildNode(std::tr1::shared_ptr<oss::lua::LuaSensorScriptGroup> childNode) {
+            virtual void AddChildNode(std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> childNode) {
                 this->TreeNode::AddChildNode(childNode);
             }
 
-            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::lua::LuaSensorScriptGroup> childNode) {
+            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> childNode) {
                 this->TreeNode::RemoveChildNode(childNode);
             }
 

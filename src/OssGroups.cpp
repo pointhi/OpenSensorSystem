@@ -98,12 +98,15 @@ namespace oss {
         }
     }
 
+    namespace helpGroups {
+
+        LuaAndSensorGroup::~LuaAndSensorGroup() {
+        }
+    }
+
     namespace lua {
 
         LuaGroup::~LuaGroup() {
-        }
-
-        LuaSensorScriptGroup::~LuaSensorScriptGroup() {
         }
     }
 

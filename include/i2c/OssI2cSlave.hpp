@@ -29,11 +29,11 @@ namespace oss {
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 
-            virtual void AddChildNode(std::tr1::shared_ptr<oss::lua::LuaSensorScriptGroup> childNode) {
+            virtual void AddChildNode(std::tr1::shared_ptr<oss::lua::LuaGroup> childNode) {
                 this->TreeNode::AddChildNode(childNode);
             }
 
-            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::lua::LuaSensorScriptGroup> childNode) {
+            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::lua::LuaGroup> childNode) {
                 this->TreeNode::RemoveChildNode(childNode);
             }
 

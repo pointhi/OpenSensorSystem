@@ -19,6 +19,9 @@
 #include "../../include/OssSpecialFunctions.hpp"
 #include "../../include/OssConstants.hpp"
 
+#include "../../include/sensor/OssSensor.hpp"
+#include "../../include/lua/OssLuaSensorScript.hpp"
+
 namespace oss {
     namespace i2c {
 
@@ -37,6 +40,24 @@ namespace oss {
 
         void Slave::parseXml(tinyxml2::XMLNode * const xmlNode) {
             if (std::string(xmlNode->ToElement()->Name()) == oss::constants::xmlElementNames::i2cElements::I2cSlave) {
+
+                std::string childName;
+
+                for (tinyxml2::XMLElement* helpElement = xmlNode->FirstChildElement()
+                        ; helpElement != NULL
+                        ; helpElement = helpElement->NextSiblingElement()
+                        ) {
+
+                    childName.clear();
+                    childName = helpElement->Name();
+
+                    if (childName == oss::constants::xmlElementNames::luaElements::LuaScript) {
+                        std::tr1::shared_ptr<oss::lua::LuaGroup> newChildElement(new oss::lua::LuaSensorScript);
+                        this->AddChildNode(newChildElement);
+                        newChildElement->parseXml(helpElement);
+                    }
+                }
+
                 this->parseMainXmlParameter(xmlNode);
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {

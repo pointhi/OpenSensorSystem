@@ -26,11 +26,11 @@ namespace oss {
             SmbSlave(const SmbSlave &orig);
             virtual ~SmbSlave();
 
-            virtual void AddChildNode(std::tr1::shared_ptr<oss::sensor::SensorGroup> childNode) {
+            virtual void AddChildNode(std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> childNode) {
                 this->TreeNode::AddChildNode(childNode);
             }
 
-            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::sensor::SensorGroup> childNode) {
+            virtual void RemoveChildNode(std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> childNode) {
                 this->TreeNode::RemoveChildNode(childNode);
             }
 
