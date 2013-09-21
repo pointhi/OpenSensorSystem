@@ -13,6 +13,12 @@ A tree based controll-system to work with sensors, based on xml and lua
 * lua2.5
 * luabind
 
+##Documentation
+
+I have generate a Doxygen-Documention from the source:
+http://doxygen.open-sensor-system.oe5tpo.com/
+please note, that this documentation is generated manually, and can be outdated! The easiest is checking the last commit-hash from github and from the documentation.
+
 ##Simple Programm
 
 This is a simple Test-File. It load the xml-file(s) and generate a simple tree-structure from it.
