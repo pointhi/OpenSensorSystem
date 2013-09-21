@@ -1,8 +1,10 @@
-/*
- * File:   OssConstants.hpp
- * Author: thomas
+/**
+ * @file OssConstants.hpp
  *
- * Created on 16. September 2013, 12:52
+ * @author thomas
+ *
+ * @date 16. September 2013
+ * @copyright GNU General Public License (GPL) 3.0
  */
 
 #ifndef OSSCONSTANTS_HPP

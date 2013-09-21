@@ -1,8 +1,10 @@
-/*
- * File:   OpenSensorSystem.hpp
- * Author: thomas
+/**
+ * @file OpenSensorSystem.hpp
  *
- * Created on 1. Juli 2013, 15:55
+ * @author thomas
+ *
+ * @date 1. Juli 2013
+ * @copyright GNU General Public License (GPL) 3.0
  */
 
 #ifndef OPENSENSORSYSTEM_HPP

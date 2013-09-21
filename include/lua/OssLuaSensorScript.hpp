@@ -1,8 +1,10 @@
-/*
- * File:   OssLuaSensorScript.hpp
- * Author: thomas
+/**
+ * @file OssLuaSensorScript.hpp
  *
- * Created on 19. September 2013, 15:52
+ * @author thomas
+ *
+ * @date 19. September 2013
+ * @copyright GNU General Public License (GPL) 3.0
  */
 
 #ifndef OSSLUASENSORSCRIPT_HPP

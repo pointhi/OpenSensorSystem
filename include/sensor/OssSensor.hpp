@@ -1,8 +1,10 @@
-/*
- * File:   OssSensor.hpp
- * Author: thomas
+/**
+ * @file OssSensor.hpp
  *
- * Created on 20. September 2013, 14:12
+ * @author thomas
+ *
+ * @date 20. September 2013
+ * @copyright GNU General Public License (GPL) 3.0
  */
 
 #ifndef OSSSENSOR_HPP
