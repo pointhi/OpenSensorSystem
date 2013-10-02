@@ -91,6 +91,14 @@ namespace oss {
                 return this->parentNode;
             }
 
+            const TreeNode * const GetRootNode() const {
+                if (this->parentNode) {
+                    return this->parentNode->GetRootNode();
+                } else {
+                    return this;
+                }
+            }
+
             /**
              * @brief Set Pointer to Parrent Node
              *
