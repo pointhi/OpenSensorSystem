@@ -61,7 +61,7 @@ namespace oss {
                 this->parseMainXmlParameter(xmlNode);
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
             } else {
-                std::clog << "WARNING: <" << oss::constants::xmlElementNames::i2cElements::I2cSlave << "> isn't parent-node, ignoring child elements and values" << std::endl;
+                std::clog << "WARNING: <" << oss::constants::xmlElementNames::i2cElements::I2cSlave << "> isn't parent-node, ignoring child elements and values, node is: <" << std::string(xmlNode->ToElement()->Name()) << ">" << std::endl;
             }
         }
 
