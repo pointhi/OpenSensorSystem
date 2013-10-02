@@ -91,6 +91,11 @@ namespace oss {
                 return this->parentNode;
             }
 
+            /**
+             * @brief Get The Root-Node of this Element
+             * 
+             * @return
+             */
             const TreeNode * const GetRootNode() const {
                 if (this->parentNode) {
                     return this->parentNode->GetRootNode();
