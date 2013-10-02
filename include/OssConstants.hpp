@@ -16,6 +16,7 @@ namespace oss {
     namespace constants {
         namespace variableNames {
             static const std::string ObjectName("name");
+            static const std::string FileName("file");
             namespace variousVariables {
                 static const std::string ConstantVariableValue("value");
             }

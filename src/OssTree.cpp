@@ -15,6 +15,7 @@
 
 #include "../include/OssTree.hpp"
 #include "../include/OssConstants.hpp"
+#include "../include/lua/OssLuaSensorScript.hpp"
 
 namespace oss {
     namespace tree {
@@ -58,8 +59,23 @@ namespace oss {
 
         std::string TreeNode::DrawTree(const bool drawScriptParts, const std::string treeString, const std::string treeChildString, const unsigned int deep) const {
 
-            // Generate the ReturnString
-            std::string returnTree(treeString + this->GetVariable(oss::constants::variableNames::ObjectName));
+            // Generate the beginning ReturnString
+            std::string returnTree;
+
+            // If true, this class wouldn't draw in the tree-overview
+            bool skipClass = false;
+
+            if (!this->GetVariable(oss::constants::variableNames::ObjectName).empty()) {
+                returnTree = treeString + this->GetVariable(oss::constants::variableNames::ObjectName);
+            } else if (dynamic_cast<const oss::lua::LuaSensorScript*> (this)) {
+                if (drawScriptParts) {
+                    returnTree = treeString + "script: " + this->GetVariable(oss::constants::variableNames::FileName);
+                } else {
+                    skipClass = true;
+                }
+            } else {
+                returnTree = treeString + "unknow";
+            }
 
             // Get Strings from child-nodes and formate them
             if (deep > 0) {
@@ -71,17 +87,21 @@ namespace oss {
                         ) {
 
                     childTree.clear();
-                    childTree = (*it)->DrawTree(deep - 1, treeString, treeChildString);
+                    childTree = (*it)->DrawTree(drawScriptParts, treeString, treeChildString, deep - 1);
 
                     // Draw a child-string in every row of a child Node
-                    for (unsigned int i = childTree.find(treeString)
-                            ; i < childTree.size()
-                            ; i = childTree.find(treeString, i + treeChildString.size() + 1)
-                            ) {
-                        childTree.insert(i, treeChildString);
+                    if (!skipClass) {
+                        for (unsigned int i = childTree.find(treeString)
+                                ; i < childTree.size()
+                                ; i = childTree.find(treeString, i + treeChildString.size() + 1)
+                                ) {
+                            childTree.insert(i, treeChildString);
+                        }
                     }
-
-                    returnTree += "\n" + childTree;
+                    if (it != this->childNodes.begin() || !skipClass) {
+                        returnTree += "\n";
+                    }
+                    returnTree += childTree;
                 }
             }
 
