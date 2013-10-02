@@ -114,14 +114,16 @@ namespace oss {
             /**
              * @brief Generate a graphical output of the Node and all Child-Nodes
              *
-             * @param deep The maximum output-deep befor the function would stop
+             * @param drawScriptParts enable or dissable rendering of scripts in output tree, not implemented yet!
              * @param treeString Define the Characters, which would be drawn before the name of the element
              * @param treeChildString Define the Characters, which would be drawn at the start, when the element is deeper than the start-node
+             * @param deep The maximum output-deep befor the function would stop
              * @return A string who contain the full tree-network
              *
              * @warning This Function is recursiv, in worst case the function go so long like deep != 0
+             * @todo implementing rendering without script parts and or emty names
              */
-            std::string DrawTree(const unsigned int deep = 100, const std::string treeString = "|- ", const std::string treeChildString = "  ") const;
+            std::string DrawTree(const bool drawScriptParts = true, const std::string treeString = "|- ", const std::string treeChildString = "  ", const unsigned int deep = 100) const;
 
         public:
 

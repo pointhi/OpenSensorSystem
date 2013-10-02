@@ -56,7 +56,7 @@ namespace oss {
             throw "Id to high";
         }
 
-        std::string TreeNode::DrawTree(const unsigned int deep, const std::string treeString, const std::string treeChildString) const {
+        std::string TreeNode::DrawTree(const bool drawScriptParts, const std::string treeString, const std::string treeChildString, const unsigned int deep) const {
 
             // Generate the ReturnString
             std::string returnTree(treeString + this->GetVariable(oss::constants::variableNames::ObjectName));
