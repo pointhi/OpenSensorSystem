@@ -1,8 +1,11 @@
-/*
- * File:   OssSensor.cpp
- * Author: thomas
+/**
+ * @file OssSensor.cpp
+ * @author thomas
  *
- * Created on 20. September 2013, 14:12
+ * @date 20. September 2013
+ * @copyright GNU General Public License (GPL) 3.0
+ *
+ * @todo check const_cast<> in constructer and destructor functions
  */
 
 #include <iostream>
@@ -13,16 +16,27 @@
 #include "../../include/OssGroups.hpp"
 #include "../../include/OssConstants.hpp"
 
+#include "../../include/OssRootNode.hpp"
+
 namespace oss {
     namespace sensor {
 
         Sensor::Sensor() {
+            oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
+            if (!rootNode) {
+                rootNode->AddSensor(this);
+            }
         }
 
         Sensor::Sensor(const Sensor& orig) {
+
         }
 
         Sensor::~Sensor() {
+            oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
+            if (!rootNode) {
+                rootNode->RemoveSensor(this);
+            }
         }
 
         void Sensor::parseXml(tinyxml2::XMLNode * const xmlNode) {

@@ -93,4 +93,28 @@ namespace oss {
         }
     }
 
+    oss::sensor::SensorGroup * const RootNode::GetSensor(const std::string name) const {
+        for (std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorList.begin()
+                ; it != this->sensorList.end()
+                ; it++
+                ) {
+
+            if ((*it)->GetVariable(oss::constants::variableNames::ObjectName) == name) {
+                return *it;
+            }
+        }
+        throw "No Sensor Element found";
+    }
+
+    oss::sensor::SensorGroup * const RootNode::GetSensor(const unsigned int id) const {
+        if (id<this->sensorList.size()) {
+            std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorList.begin();
+
+            for (unsigned int i = 0; i < id; it++, i++);
+
+            return *it;
+        }
+        throw "Id to high";
+    }
+
 }

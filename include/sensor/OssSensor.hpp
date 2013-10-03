@@ -18,7 +18,7 @@ namespace oss {
         class Sensor : public SensorGroup {
         public:
             Sensor();
-            Sensor(const Sensor& orig);
+
             virtual ~Sensor();
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
@@ -32,7 +32,7 @@ namespace oss {
             }
 
         private:
-
+            Sensor(const Sensor& orig);
         };
     }
 }
