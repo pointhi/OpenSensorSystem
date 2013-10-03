@@ -93,8 +93,8 @@ namespace oss {
 
             /**
              * @brief Get The Root-Node of this Element
-             * 
-             * @return
+             *
+             * @return Pointer to Root-Node
              */
             const TreeNode * const GetRootNode() const {
                 if (this->parentNode) {
@@ -119,7 +119,7 @@ namespace oss {
              * @return Number of Child Elements
              */
             unsigned int GetChildSize() const {
-                this->childNodes.size();
+                return this->childNodes.size();
             }
 
         public:
