@@ -67,7 +67,7 @@ namespace oss {
          */
         void AddSensor(oss::sensor::SensorGroup* _sensorObject) {
             //            this->sensorList.insert(_sensorObject);
-            //            std::cout << "set sensor" << std::endl;
+            std::cout << "set sensor" << std::endl;
         }
 
         /**
@@ -79,7 +79,7 @@ namespace oss {
          */
         void RemoveSensor(oss::sensor::SensorGroup* _sensorObject) {
             //            this->sensorList.erase(_sensorObject);
-            //            std::cout << "remove sensor" << std::endl;
+            std::cout << "remove sensor" << std::endl;
         }
 
         /**

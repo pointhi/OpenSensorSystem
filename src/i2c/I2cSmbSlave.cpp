@@ -51,7 +51,7 @@ namespace oss {
                     childName = helpElement->Name();
 
                     if (childName == oss::constants::xmlElementNames::sensorElements::GeneralSensor) {
-                        std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> newChildElement(new oss::sensor::Sensor);
+                        std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> newChildElement(new oss::sensor::Sensor(this));
                         this->AddChildNode(newChildElement);
                         newChildElement->parseXml(helpElement);
                     } else if (childName == oss::constants::xmlElementNames::luaElements::LuaScript) {

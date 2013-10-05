@@ -13,11 +13,18 @@
 #include "../OssGroups.hpp"
 
 namespace oss {
+
+    namespace tree {
+        class TreeNode;
+    }
+
     namespace sensor {
 
         class Sensor : public SensorGroup {
         public:
-            Sensor();
+            //            Sensor();
+
+            Sensor(const oss::tree::TreeNode *parentNode);
 
             virtual ~Sensor();
 

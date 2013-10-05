@@ -109,7 +109,7 @@ namespace oss {
              *
              * @param _parentNode
              */
-            void SetParrentNode(TreeNode *_parentNode) {
+            void SetParrentNode(const TreeNode *_parentNode) {
                 this->parentNode = _parentNode;
             }
 
@@ -191,7 +191,7 @@ namespace oss {
 
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
-            TreeNode const *parentNode;
+            const TreeNode *parentNode;
 
             mutable std::map<std::string, std::string> variables;
             mutable std::map<std::string, std::string> constants;

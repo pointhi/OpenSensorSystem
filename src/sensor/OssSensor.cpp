@@ -19,11 +19,18 @@
 #include "../../include/OssRootNode.hpp"
 
 namespace oss {
+
     namespace sensor {
 
-        Sensor::Sensor() {
+        //        Sensor::Sensor() {
+        //            std::cout << "WARNING: Please use konstructor, with set the parrent node automaticly" << std::endl;
+        //        }
+
+        Sensor::Sensor(const oss::tree::TreeNode *parentNode) {
+            this->SetParrentNode(parentNode);
+
             oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
-            if (!rootNode) {
+            if (rootNode) {
                 rootNode->AddSensor(this);
             }
         }
@@ -34,7 +41,8 @@ namespace oss {
 
         Sensor::~Sensor() {
             oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
-            if (!rootNode) {
+            //            std::cout << "remove " << this->GetRootNode()->GetVariable("name") << std::endl;
+            if (rootNode) {
                 rootNode->RemoveSensor(this);
             }
         }
