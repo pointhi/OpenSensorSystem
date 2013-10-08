@@ -24,7 +24,7 @@ namespace oss {
         public:
             //            Sensor();
 
-            Sensor(const oss::tree::TreeNode *parentNode);
+            explicit Sensor(const oss::tree::TreeNode *parentNode);
 
             virtual ~Sensor();
 
