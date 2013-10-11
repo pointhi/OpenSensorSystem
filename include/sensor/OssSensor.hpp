@@ -24,9 +24,9 @@ namespace oss {
         public:
             Sensor();
 
-            explicit Sensor(const std::tr1::shared_ptr<oss::tree::TreeNode> parentNode);
-
             virtual ~Sensor();
+
+            virtual void InitChild();
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 

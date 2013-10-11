@@ -51,7 +51,6 @@ namespace oss {
                     childName = helpElement->Name();
 
                     if (childName == oss::constants::xmlElementNames::sensorElements::GeneralSensor) {
-                        //                        std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> newChildElement(new oss::sensor::Sensor(this));      // TODO
                         std::tr1::shared_ptr<oss::helpGroups::LuaAndSensorGroup> newChildElement(new oss::sensor::Sensor);
                         this->AddChildNode(newChildElement);
                         newChildElement->parseXml(helpElement);
