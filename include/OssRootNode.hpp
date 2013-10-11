@@ -13,6 +13,8 @@
 #include <string>
 #include <vector>
 
+#include <tr1/memory>
+
 #include "OssGroups.hpp"
 #include "OssTree.hpp"
 
@@ -88,7 +90,7 @@ namespace oss {
          * @return Number of Sensor Elements
          */
         unsigned int GetSensorSize() const {
-            return this->sensorList.size();
+            return this->sensorListOld.size();
         }
 
     private:
@@ -97,7 +99,8 @@ namespace oss {
         /**
          * @todo replace with vector or other container
          */
-        std::set<oss::sensor::SensorGroup*> sensorList;
+        std::set<std::tr1::weak_ptr<oss::sensor::SensorGroup> > sensorList;
+        std::set<oss::sensor::SensorGroup*> sensorListOld;
     };
 }
 #endif	/* OSSROOTNODE_HPP */

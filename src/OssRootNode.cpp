@@ -94,8 +94,8 @@ namespace oss {
     }
 
     oss::sensor::SensorGroup * const RootNode::GetSensor(const std::string name) const {
-        for (std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorList.begin()
-                ; it != this->sensorList.end()
+        for (std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorListOld.begin()
+                ; it != this->sensorListOld.end()
                 ; it++
                 ) {
 
@@ -107,8 +107,8 @@ namespace oss {
     }
 
     oss::sensor::SensorGroup * const RootNode::GetSensor(const unsigned int id) const {
-        if (id<this->sensorList.size()) {
-            std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorList.begin();
+        if (id<this->sensorListOld.size()) {
+            std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorListOld.begin();
 
             for (unsigned int i = 0; i < id; it++, i++);
 
