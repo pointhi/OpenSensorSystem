@@ -14,6 +14,7 @@
 #include <tr1/memory>
 #include <map>
 #include <string>
+#include <iostream>
 
 namespace oss {
 
@@ -34,13 +35,24 @@ namespace oss {
             virtual ~TreeNode();
 
             /**
-             * @brief Add a new child-element
+             * @brief Would be called after insterting in array and setting root and element node
+             */
+            virtual void InitChild() {
+            }
+
+            /**
+             * @brief Add a new child-element and set element and parrent reference Node
              *
              * @param childNode The new Node
              */
-            virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> childNode) {
-                this->childNodes.insert(childNode);
-                //                childNode->SetParrentNode(this);      // TODO
+            virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> _childNode) {
+                _childNode->SetElementNode(_childNode);
+                this->childNodes.insert(_childNode);
+                if (!this->elementNode.expired()) {
+                    _childNode->SetParrentNode(this->GetElementNode());
+                } else { // TODO
+                }
+                _childNode->InitChild();
             }
 
             /**
@@ -85,32 +97,54 @@ namespace oss {
             /**
              * @brief Get The Parrent Node of this Element
              *
-             * @return Pointer to Parrent
+             * @return shared_ptr to Parrent
              */
             std::tr1::shared_ptr<TreeNode> GetParrentNode() const {
-                return this->parentNode.lock(); // TODO
+                return this->parentNode.lock();
             }
 
             /**
              * @brief Get The Root-Node of this Element
              *
-             * @return Pointer to Root-Node
+             * @return shared_ptr to Root-Node
              */
             std::tr1::shared_ptr<TreeNode> GetRootNode() const {
-                if (this->parentNode.expired()) {
-                    return this->parentNode.lock()->GetRootNode();
+                if (!this->parentNode.expired()) {
+                    return this->GetParrentNode()->GetRootNode();
                 } else {
-                    //                    return this;
+                    return this->GetElementNode();
                 }
             }
 
             /**
-             * @brief Set Pointer to Parrent Node
+             * @brief Set weak_ptr to Parrent Node
              *
              * @param _parentNode
              */
-            void SetParrentNode(const std::tr1::shared_ptr<TreeNode> _parentNode) {
+            void SetParrentNode(std::tr1::weak_ptr<TreeNode> _parentNode) {
                 this->parentNode = _parentNode;
+            }
+
+            /**
+             * @brief Get The Element Node of this Element
+             *
+             * @return shared_ptr to Element
+             */
+            std::tr1::shared_ptr<TreeNode> GetElementNode() const {
+                return this->elementNode.lock();
+            }
+
+            /**
+             * @brief Set weak_ptr to Element Node
+             *
+             * @param _parentNode
+             */
+            void SetElementNode(std::tr1::weak_ptr<TreeNode> _elementNode) {
+                if (_elementNode.lock().get() == this) {
+                    this->elementNode = _elementNode;
+                } else {
+                    std::cerr << "ERROR: The function Argument for SetElementNode isn't a weak_ptr to this element" << std::endl;
+                }
             }
 
             /**
@@ -191,7 +225,7 @@ namespace oss {
 
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
-            std::tr1::weak_ptr<TreeNode> parentNode;
+            std::tr1::weak_ptr<TreeNode> parentNode, elementNode;
 
             mutable std::map<std::string, std::string> variables;
             mutable std::map<std::string, std::string> constants;
