@@ -88,8 +88,7 @@ namespace oss {
              * @return Pointer to Parrent
              */
             std::tr1::shared_ptr<TreeNode> GetParrentNode() const {
-                std::tr1::shared_ptr<TreeNode> helpNode(this->parentNode);
-                return helpNode; // TODO
+                return this->parentNode.lock(); // TODO
             }
 
             /**
