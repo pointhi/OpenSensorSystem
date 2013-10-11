@@ -40,7 +40,7 @@ namespace oss {
              */
             virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> childNode) {
                 this->childNodes.insert(childNode);
-                childNode->SetParrentNode(this);
+                //                childNode->SetParrentNode(this);      // TODO
             }
 
             /**
@@ -87,8 +87,9 @@ namespace oss {
              *
              * @return Pointer to Parrent
              */
-            const TreeNode * const GetParrentNode() const {
-                return this->parentNode;
+            std::tr1::shared_ptr<TreeNode> GetParrentNode() const {
+                std::tr1::shared_ptr<TreeNode> helpNode(this->parentNode);
+                return helpNode; // TODO
             }
 
             /**
@@ -96,11 +97,11 @@ namespace oss {
              *
              * @return Pointer to Root-Node
              */
-            const TreeNode * const GetRootNode() const {
-                if (this->parentNode) {
-                    return this->parentNode->GetRootNode();
+            std::tr1::shared_ptr<TreeNode> GetRootNode() const {
+                if (this->parentNode.expired()) {
+                    return this->parentNode.lock()->GetRootNode();
                 } else {
-                    return this;
+                    //                    return this;
                 }
             }
 
@@ -109,7 +110,7 @@ namespace oss {
              *
              * @param _parentNode
              */
-            void SetParrentNode(const TreeNode *_parentNode) {
+            void SetParrentNode(const std::tr1::shared_ptr<TreeNode> _parentNode) {
                 this->parentNode = _parentNode;
             }
 
@@ -191,7 +192,7 @@ namespace oss {
 
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
-            const TreeNode *parentNode;
+            std::tr1::weak_ptr<TreeNode> parentNode;
 
             mutable std::map<std::string, std::string> variables;
             mutable std::map<std::string, std::string> constants;

@@ -20,10 +20,10 @@
 namespace oss {
     namespace tree {
 
-        TreeNode::TreeNode() : parentNode(NULL) {
+        TreeNode::TreeNode() {
         }
 
-        TreeNode::TreeNode(std::string newName) : parentNode(NULL) {
+        TreeNode::TreeNode(std::string newName) {
             this->SetVariable(oss::constants::variableNames::ObjectName, newName);
         }
 

@@ -22,9 +22,9 @@ namespace oss {
 
         class Sensor : public SensorGroup {
         public:
-            //            Sensor();
+            Sensor();
 
-            explicit Sensor(const oss::tree::TreeNode *parentNode);
+            explicit Sensor(const std::tr1::shared_ptr<oss::tree::TreeNode> parentNode);
 
             virtual ~Sensor();
 

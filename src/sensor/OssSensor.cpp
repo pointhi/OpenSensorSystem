@@ -22,17 +22,17 @@ namespace oss {
 
     namespace sensor {
 
-        //        Sensor::Sensor() {
-        //            std::cout << "WARNING: Please use konstructor, with set the parrent node automaticly" << std::endl;
-        //        }
+        Sensor::Sensor() {
+            std::cout << "WARNING: Please use konstructor, with set the parrent node automaticly" << std::endl;
+        }
 
-        Sensor::Sensor(const oss::tree::TreeNode *parentNode) {
+        Sensor::Sensor(const std::tr1::shared_ptr<oss::tree::TreeNode> parentNode) {
             this->SetParrentNode(parentNode);
 
-            oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
-            if (rootNode) {
-                rootNode->AddSensor(this);
-            }
+            //            std::tr1::shared_ptr<oss::RootNode> rootNode(dynamic_cast<std::tr1::shared_ptr<oss::RootNode> > (this->GetRootNode()));
+            //            if (rootNode) {   // TODO
+            //                rootNode->AddSensor(this);
+            //            }
         }
 
         Sensor::Sensor(const Sensor& orig) {
@@ -40,11 +40,11 @@ namespace oss {
         }
 
         Sensor::~Sensor() {
-            oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
-            //            std::cout << "remove " << this->GetRootNode()->GetVariable("name") << std::endl;
-            if (rootNode) {
-                rootNode->RemoveSensor(this);
-            }
+            //            oss::RootNode *rootNode = dynamic_cast<oss::RootNode*> (const_cast<TreeNode*> (this->GetRootNode()));
+            //            //            std::cout << "remove " << this->GetRootNode()->GetVariable("name") << std::endl;
+            //            if (rootNode) {
+            //                rootNode->RemoveSensor(this);
+            //            }
         }
 
         void Sensor::parseXml(tinyxml2::XMLNode * const xmlNode) {
