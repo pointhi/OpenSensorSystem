@@ -12,6 +12,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include <tr1/memory>
 
@@ -20,6 +21,11 @@
 
 namespace oss {
 
+    /**
+     * @brief
+     *
+     * @warning You must initialize this object in an std::tr1::shared_ptr<oss::tree::TreeNode>, or simply using oss::Root
+     */
     class RootNode : public oss::MainTreeGroup {
     public:
         RootNode();
@@ -41,24 +47,24 @@ namespace oss {
         /**
          * @brief Get the pointer of a Sensor Element
          *
-         * @param name Name of the Sensor
+         * @param _name Name of the Sensor
          *
          * @return Shared Pointer of the Sensor
          *
          * @warning When the name was multiply used, only the first found element would get return
          * @throw When the element would not found
          */
-        oss::sensor::SensorGroup * const GetSensor(const std::string name) const;
+        std::tr1::shared_ptr<oss::sensor::SensorGroup> GetSensor(const std::string _name) const;
 
         /**
          * @brief Get the pointer of a Sensor Element
          *
-         * @param id ID of Sensor
+         * @param _id ID of Sensor
          *
          * @return Shared Pointer of the Sensor
          * @throw When id is to high (bigger as the amount of child nodes)
          */
-        oss::sensor::SensorGroup * const GetSensor(const unsigned int id) const;
+        std::tr1::shared_ptr<oss::sensor::SensorGroup> GetSensor(const unsigned int _id) const;
 
         /**
          * @brief Add a Sensor to the List
@@ -67,9 +73,11 @@ namespace oss {
          *
          * @todo solv Segmentation fault
          */
-        void AddSensor(oss::sensor::SensorGroup* _sensorObject) {
-            //            this->sensorList.insert(_sensorObject);
-            std::cout << "set sensor" << std::endl;
+        void AddSensor(std::tr1::weak_ptr<oss::sensor::SensorGroup> _sensorObject) {
+            this->sensorList.insert(_sensorObject);
+            this->sensorList.erase(_sensorObject);
+            this->sensorList.erase(_sensorObject);
+            //            std::cout << "set sensor" << std::endl;
         }
 
         /**
@@ -79,9 +87,9 @@ namespace oss {
          *
          * @todo solv Segmentation fault
          */
-        void RemoveSensor(oss::sensor::SensorGroup* _sensorObject) {
-            //            this->sensorList.erase(_sensorObject);
-            std::cout << "remove sensor" << std::endl;
+        void RemoveSensor(std::tr1::weak_ptr<oss::sensor::SensorGroup> _sensorObject) {
+            this->sensorList.erase(_sensorObject);
+            //            std::cout << "remove sensor" << std::endl;
         }
 
         /**
@@ -90,7 +98,7 @@ namespace oss {
          * @return Number of Sensor Elements
          */
         unsigned int GetSensorSize() const {
-            return this->sensorListOld.size();
+            return this->sensorList.size();
         }
 
     private:
@@ -100,7 +108,6 @@ namespace oss {
          * @todo replace with vector or other container
          */
         std::set<std::tr1::weak_ptr<oss::sensor::SensorGroup> > sensorList;
-        std::set<oss::sensor::SensorGroup*> sensorListOld;
     };
 }
 #endif	/* OSSROOTNODE_HPP */

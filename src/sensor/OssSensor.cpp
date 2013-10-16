@@ -26,11 +26,13 @@ namespace oss {
         }
 
         void Sensor::InitChild() {
-            // Old code, openpoint todo
-            //            std::tr1::shared_ptr<oss::RootNode> rootNode(dynamic_cast<std::tr1::shared_ptr<oss::RootNode> > (this->GetRootNode()));
-            //            if (rootNode) {
-            //                rootNode->AddSensor(this);
-            //            }
+
+            // Copy Element to Root-Node into help-array
+            std::tr1::shared_ptr<oss::RootNode> rootNode = std::tr1::dynamic_pointer_cast<oss::RootNode>(this->GetRootNode());
+            // If root-element is correct, then copy a shared_ptr into the dynamic array
+            if (rootNode.get()) {
+                rootNode->AddSensor(std::tr1::dynamic_pointer_cast<oss::sensor::SensorGroup>(this->GetElementNode()));
+            }
         }
 
         Sensor::Sensor(const Sensor& orig) {
@@ -38,6 +40,7 @@ namespace oss {
         }
 
         Sensor::~Sensor() {
+
         }
 
         void Sensor::parseXml(tinyxml2::XMLNode * const xmlNode) {

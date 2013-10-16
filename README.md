@@ -24,11 +24,11 @@ please note, that this documentation is generated manually, and can be outdated!
 This is a simple Test-File. It load the xml-file(s) and generate a simple tree-structure from it.
 
 ```C++
-oss::RootNode SensorSystem; // Generate new OSS-Object
+oss::Root SensorSystem; // Generate new OSS-Object
 
-SensorSystem.parseXml("example.xml");   // Loading Data
+SensorSystem->parseXml("example.xml");   // Loading Data
 
-std::cout << SensorSystem.DrawTree();   // Print Tree-Structure of Data
+std::cout << SensorSystem->DrawTree();   // Print Tree-Structure of Data
 ```
 
 ##Example XML-File

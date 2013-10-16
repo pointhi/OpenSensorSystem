@@ -13,6 +13,7 @@
 /// General
 #include "OssTree.hpp"
 #include "OssGroups.hpp"
+#include "OssRoot.hpp"
 #include "OssRootNode.hpp"
 
 #include "OssSpecialFunctions.hpp"

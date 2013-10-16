@@ -93,26 +93,26 @@ namespace oss {
         }
     }
 
-    oss::sensor::SensorGroup * const RootNode::GetSensor(const std::string name) const {
-        for (std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorListOld.begin()
-                ; it != this->sensorListOld.end()
+    std::tr1::shared_ptr<oss::sensor::SensorGroup> RootNode::GetSensor(const std::string _name) const {
+        for (std::set<std::tr1::weak_ptr<oss::sensor::SensorGroup> >::iterator it = this->sensorList.begin()
+                ; it != this->sensorList.end()
                 ; it++
                 ) {
 
-            if ((*it)->GetVariable(oss::constants::variableNames::ObjectName) == name) {
-                return *it;
+            if ((*it).lock()->GetVariable(oss::constants::variableNames::ObjectName) == _name) {
+                return (*it).lock();
             }
         }
         throw "No Sensor Element found";
     }
 
-    oss::sensor::SensorGroup * const RootNode::GetSensor(const unsigned int id) const {
-        if (id<this->sensorListOld.size()) {
-            std::set<oss::sensor::SensorGroup*>::iterator it = this->sensorListOld.begin();
+    std::tr1::shared_ptr<oss::sensor::SensorGroup> RootNode::GetSensor(const unsigned int _id) const {
+        if (_id < this->sensorList.size()) {
+            std::set<std::tr1::weak_ptr<oss::sensor::SensorGroup> >::iterator it = this->sensorList.begin();
 
-            for (unsigned int i = 0; i < id; it++, i++);
+            for (unsigned int i = 0; i < _id; it++, i++);
 
-            return *it;
+            return (*it).lock();
         }
         throw "Id to high";
     }
