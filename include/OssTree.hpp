@@ -23,7 +23,7 @@ namespace oss {
         /**
          * @brief represent a tree-structure
          */
-        class TreeNode {
+        class TreeNode : public std::tr1::enable_shared_from_this<TreeNode> {
         public:
 
             TreeNode();
@@ -46,12 +46,14 @@ namespace oss {
              * @param childNode The new Node
              */
             virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> _childNode) {
-                _childNode->SetElementNode(_childNode);
+                //                _childNode->SetElementNode(_childNode);
                 this->childNodes.insert(_childNode);
-                if (!this->elementNode.expired()) {
-                    _childNode->SetParrentNode(this->GetElementNode());
-                } else { // TODO
-                }
+                //                if (!this->elementNode.expired()) {
+                //                    _childNode->SetParrentNode(this->GetElementNode());
+                //                } else { // TODO
+                //
+                //                }
+                _childNode->SetParrentNode(this->GetElementNode());
                 _childNode->InitChild();
             }
 
@@ -108,7 +110,7 @@ namespace oss {
              *
              * @return shared_ptr to Root-Node
              */
-            std::tr1::shared_ptr<TreeNode> GetRootNode() const {
+            std::tr1::shared_ptr<TreeNode> GetRootNode() {
                 if (!this->parentNode.expired()) {
                     return this->GetParrentNode()->GetRootNode();
                 } else {
@@ -130,8 +132,15 @@ namespace oss {
              *
              * @return shared_ptr to Element
              */
-            std::tr1::shared_ptr<TreeNode> GetElementNode() const {
-                return this->elementNode.lock();
+            std::tr1::shared_ptr<TreeNode> GetElementNode() {
+                //                if (this->elementNode.expired()) {
+                //                    std::tr1::shared_ptr<TreeNode> helpPtr = (const_cast<TreeNode*> (this));
+                //                    this->SetElementNode(helpPtr);
+                //                    this->SetElementNode(this->shared_from_this());
+                //                }
+                //                return this->elementNode.lock();
+                return this->shared_from_this();
+
             }
 
             /**
@@ -139,13 +148,13 @@ namespace oss {
              *
              * @param _parentNode
              */
-            void SetElementNode(std::tr1::weak_ptr<TreeNode> _elementNode) {
-                if (_elementNode.lock().get() == this) {
-                    this->elementNode = _elementNode;
-                } else {
-                    std::cerr << "ERROR: The function Argument for SetElementNode isn't a weak_ptr to this element" << std::endl;
-                }
-            }
+            //            void SetElementNode(std::tr1::weak_ptr<TreeNode> _elementNode) {
+            //                if (_elementNode.lock().get() == this) {
+            //                    this->elementNode = _elementNode;
+            //                } else {
+            //                    std::cerr << "ERROR: The function Argument for SetElementNode isn't a weak_ptr to this element" << std::endl;
+            //                }
+            //            }
 
             /**
              * @brief Return number of Child Elements
