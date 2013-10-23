@@ -12,6 +12,7 @@
 
 #include "OssRootNode.hpp"
 #include <tr1/memory>
+#include <memory>
 
 namespace oss {
 
@@ -31,7 +32,7 @@ namespace oss {
             // Is required because of std::tr1::enable_shared_from_this as parrent of oss::tree::TreeNode
             std::tr1::shared_ptr<oss::tree::TreeNode> helpPtr(new oss::RootNode);
             // Converting to right Type
-            RootNodeReference.reset(std::tr1::dynamic_pointer_cast<oss::RootNode>(helpPtr));
+            this->RootNodeReference = std::tr1::dynamic_pointer_cast<oss::RootNode>(helpPtr);
         }
 
         virtual ~Root() {
