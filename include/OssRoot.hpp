@@ -11,6 +11,7 @@
 #define	OSSROOT_HPP
 
 #include "OssRootNode.hpp"
+#include <tr1/memory>
 
 namespace oss {
 
@@ -19,12 +20,18 @@ namespace oss {
      */
     class Root {
     private:
+        std::tr1::shared_ptr<oss::RootNode> RootNodeReference;
 
-        std::tr1::shared_ptr<oss::tree::TreeNode> RootNodeReference;
     public:
 
+        /**
+         * @brief Generate a new oss::RootNode object
+         */
         Root() {
-            RootNodeReference.reset(new oss::RootNode);
+            // Is required because of std::tr1::enable_shared_from_this as parrent of oss::tree::TreeNode
+            std::tr1::shared_ptr<oss::tree::TreeNode> helpPtr(new oss::RootNode);
+            // Converting to right Type
+            RootNodeReference.reset(std::tr1::dynamic_pointer_cast<oss::RootNode>(helpPtr));
         }
 
         virtual ~Root() {
@@ -42,8 +49,8 @@ namespace oss {
          *
          * @todo Modify it to a shared_ptr
          */
-        oss::RootNode* operator->() const {
-            return (dynamic_cast<oss::RootNode*> (RootNodeReference.get()));
+        std::tr1::shared_ptr<oss::RootNode> operator->() const {
+            return RootNodeReference;
         }
 
     };
