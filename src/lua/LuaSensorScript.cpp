@@ -13,6 +13,9 @@
 #include <tr1/memory>
 
 #include <tinyxml2.h>
+#include <lua5.2/lua.h>
+#include <luabind/luabind.hpp>
+
 
 #include "../../include/lua/OssLuaSensorScript.hpp"
 #include "../../include/OssGroups.hpp"
@@ -23,12 +26,34 @@ namespace oss {
     namespace lua {
 
         LuaSensorScript::LuaSensorScript() {
+            // Create a new lua state
+            this->LuaState = luaL_newstate();
+            luabind::open(this->LuaState);
         }
 
         LuaSensorScript::LuaSensorScript(const LuaSensorScript& orig) {
         }
 
         LuaSensorScript::~LuaSensorScript() {
+            // Close a new lua state
+            //             lua_close(this->LuaState);
+        }
+
+        void LuaSensorScript::InitChild() {
+            this->InitLua();
+        }
+
+        void LuaSensorScript::InitLua() {
+            //            luabind::module(this->LuaState) [
+            //                    luabind::def("oss::GetVariable", &oss::tree::TreeNode::GetVariable)
+            //                    ];
+        }
+
+        void LuaSensorScript::RunNode() {
+
+            //            luaL_dostring(this->LuaState, "return 'derp'");
+
+            this->TreeNode::RunNode();
         }
 
         void LuaSensorScript::parseXml(tinyxml2::XMLNode * const xmlNode) {

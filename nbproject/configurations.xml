@@ -64,8 +64,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include</Elem>
-    <Elem>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src</Elem>
+    <Elem>include</Elem>
+    <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -77,9 +77,21 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>/usr/include/lua5.2</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/include/lua5.2</pElem>
+          </incDir>
+        </ccTool>
         <linkerTool>
           <linkerLibItems>
             <linkerLibLibItem>tinyxml2</linkerLibLibItem>
+            <linkerLibLibItem>lua5.2</linkerLibLibItem>
+            <linkerLibLibItem>luabind</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -180,9 +192,15 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/lua5.2</pElem>
+          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/lua5.2</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -190,6 +208,13 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>tinyxml2</linkerLibLibItem>
+            <linkerLibLibItem>lua5.2</linkerLibLibItem>
+            <linkerLibLibItem>luabind</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp"
             ex="false"

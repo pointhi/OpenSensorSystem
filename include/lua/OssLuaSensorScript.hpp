@@ -12,14 +12,29 @@
 
 #include "../OssGroups.hpp"
 
+struct lua_State;
+
 namespace oss {
     namespace lua {
 
         class LuaSensorScript : public oss::lua::LuaGroup {
         public:
             LuaSensorScript();
-            LuaSensorScript(const LuaSensorScript& orig);
             virtual ~LuaSensorScript();
+
+        private:
+            LuaSensorScript(const LuaSensorScript& orig);
+
+        protected:
+
+            /**
+             * @brief Load all necessary modules and functions
+             */
+            virtual void InitLua();
+
+        public:
+
+            virtual void InitChild();
 
             virtual void parseXml(tinyxml2::XMLNode * const xmlNode);
 
@@ -31,7 +46,13 @@ namespace oss {
                 this->TreeNode::RemoveChildNode(childNode);
             }
 
+        public:
+
+            virtual void RunNode();
+
         private:
+
+            lua_State *LuaState;
 
         };
     }
