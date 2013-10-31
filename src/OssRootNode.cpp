@@ -117,4 +117,19 @@ namespace oss {
         throw "Id to high";
     }
 
+    unsigned int RootNode::GetSensorSize() {
+        for (std::set<std::tr1::weak_ptr<oss::sensor::SensorGroup> >::iterator it = this->sensorList.begin()
+                ; it != this->sensorList.end()
+                ; it++
+                ) {
+
+            if ((*it).expired()) {
+                std::tr1::weak_ptr<oss::sensor::SensorGroup> remove(it->lock());
+                this->sensorList.erase(it);
+                it = this->sensorList.begin();
+            }
+        }
+        return this->sensorList.size();
+    }
+
 }

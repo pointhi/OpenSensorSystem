@@ -75,8 +75,6 @@ namespace oss {
          */
         void AddSensor(std::tr1::weak_ptr<oss::sensor::SensorGroup> _sensorObject) {
             this->sensorList.insert(_sensorObject);
-            this->sensorList.erase(_sensorObject);
-            this->sensorList.erase(_sensorObject);
             //            std::cout << "set sensor" << std::endl;
         }
 
@@ -97,9 +95,7 @@ namespace oss {
          *
          * @return Number of Sensor Elements
          */
-        unsigned int GetSensorSize() const {
-            return this->sensorList.size();
-        }
+        unsigned int GetSensorSize();
 
     private:
         RootNode(const RootNode &orig);
