@@ -41,6 +41,15 @@ namespace oss {
             }
 
             /**
+             * @brief Would be called to make an actuallisation of the data, and call when needed nodes deeper in the tree
+             */
+            virtual void RunNode() {
+                for (std::set<std::tr1::shared_ptr<TreeNode> >::iterator it = this->childNodes.begin(); it != this->childNodes.end(); it++) {
+                    (*it)->RunNode();
+                }
+            }
+
+            /**
              * @brief Add a new child-element and set element and parrent reference Node
              *
              * @param childNode The new Node
