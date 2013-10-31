@@ -34,6 +34,8 @@ namespace oss {
 
             virtual ~TreeNode();
 
+        public:
+
             /**
              * @brief Would be called after insterting in array and setting root and element node
              */
@@ -41,7 +43,7 @@ namespace oss {
             }
 
             /**
-             * @brief Would be called to make an actuallisation of the data, and call when needed nodes deeper in the tree
+             * @brief Would be called to make an update of the data, and call when needed nodes deeper in the tree
              */
             virtual void RunNode() {
                 for (std::set<std::tr1::shared_ptr<TreeNode> >::iterator it = this->childNodes.begin(); it != this->childNodes.end(); it++) {
@@ -55,13 +57,7 @@ namespace oss {
              * @param childNode The new Node
              */
             virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> _childNode) {
-                //                _childNode->SetElementNode(_childNode);
                 this->childNodes.insert(_childNode);
-                //                if (!this->elementNode.expired()) {
-                //                    _childNode->SetParrentNode(this->GetElementNode());
-                //                } else { // TODO
-                //
-                //                }
                 _childNode->SetParrentNode(this->GetElementNode());
                 _childNode->InitChild();
             }
