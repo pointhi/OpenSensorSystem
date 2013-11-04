@@ -13,7 +13,11 @@
 #include <tr1/memory>
 
 #include <tinyxml2.h>
+extern "C" {
 #include <lua5.2/lua.h>
+#include <lua5.2/lualib.h>
+#include <lua5.2/lauxlib.h>
+}
 #include <luabind/luabind.hpp>
 
 
@@ -29,6 +33,8 @@ namespace oss {
             // Create a new lua state
             this->LuaState = luaL_newstate();
             luabind::open(this->LuaState);
+
+            luaL_openlibs(this->LuaState);
         }
 
         LuaSensorScript::LuaSensorScript(const LuaSensorScript& orig) {
@@ -36,22 +42,60 @@ namespace oss {
 
         LuaSensorScript::~LuaSensorScript() {
             // Close a new lua state
-            //             lua_close(this->LuaState);
+            lua_close(this->LuaState);
         }
 
         void LuaSensorScript::InitChild() {
-            this->InitLua();
+            // Function is now called from parseXml
+            //            this->InitLua();
         }
 
         void LuaSensorScript::InitLua() {
             //            luabind::module(this->LuaState) [
-            //                    luabind::def("oss::GetVariable", &oss::tree::TreeNode::GetVariable)
+            //                    //                    luabind::def("GetVariable", &oss::tree::TreeNode::GetVariable),
+            //                    luabind::def("RunNode", &oss::lua::LuaSensorScript::RunNode)
             //                    ];
+
+            //            luaL_dostring(
+            //                    this->LuaState,
+            //                    "function init()\n"
+            //                    "  print(\"Hello Lua init\")"
+            //                    "end\n"
+            //                    );
+
+            luaL_dofile(this->LuaState, this->GetVariable("file").c_str());
+
+
+            // Loading Constants
+            //            luabind::module(this->LuaState)
+            //                    [
+            //                    luabind::namespace_("oss")
+            //                    [
+            //                    luabind::namespace_("constants")
+            //                    [
+            //                    luabind::namespace_("variableNames")
+            //                    [
+            //                    //                    luabind::value("ObjectName", &oss::constants::variableNames::ObjectName)
+            //                    luabind::namespace_("variousVariables")
+            //                    [
+            //                    ]
+            //                    ]
+            //                    ]
+            //                    ]
+            //                    ];
+
+            try {
+                // Call Init Function
+                luabind::call_function<void>(this->LuaState, "init");
+            } catch (luabind::error e) {
+                std::cerr << e.what() << std::endl;
+            }
         }
 
         void LuaSensorScript::RunNode() {
 
-            //            luaL_dostring(this->LuaState, "return 'derp'");
+            //            luaL_dostring(this->LuaState, "print(\"test: \", 1)");
+            std::cout << "run node: " << this->GetVariable("file") << std::endl;
 
             this->TreeNode::RunNode();
         }
@@ -81,6 +125,7 @@ namespace oss {
                 }
 
                 this->MainTreeGroup::parseMainXmlParameter(xmlNode);
+                this->InitLua();
             } else {
                 std::clog << "WARNING: <" << oss::constants::xmlElementNames::luaElements::LuaScript << "> isn't parent-node, ignoring child elements and values, node is: <" << std::string(xmlNode->ToElement()->Name()) << ">" << std::endl;
             }
