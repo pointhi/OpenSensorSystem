@@ -52,7 +52,9 @@ namespace oss {
 
         void LuaSensorScript::InitLua() {
             // Loading file
-            luaL_dofile(this->LuaState, this->GetVariable("file").c_str());
+            if (luaL_dofile(this->LuaState, this->GetVariable("file").c_str())) {
+                std::clog << "WARNING: " << lua_tostring(this->LuaState, -1) << std::endl;
+            }
 
             // Loading main functions
             luabind::module(this->LuaState) [
@@ -80,9 +82,12 @@ namespace oss {
 
         void LuaSensorScript::RunNode() {
 
-            //            luaL_dostring(this->LuaState, "print(\"test: \", 1)");
-
-            std::cout << "run node: " << this->GetVariable("file") << std::endl;
+            try {
+                // Call Init Function
+                luabind::call_function<void>(this->LuaState, "run");
+            } catch (luabind::error e) {
+                std::cerr << "ERROR: " << e.what() << ", " << luabind::object(luabind::from_stack(e.state(), -1)) << std::endl;
+            }
 
             this->TreeNode::RunNode();
         }
