@@ -51,50 +51,37 @@ namespace oss {
         }
 
         void LuaSensorScript::InitLua() {
-            //            luabind::module(this->LuaState) [
-            //                    //                    luabind::def("GetVariable", &oss::tree::TreeNode::GetVariable),
-            //                    luabind::def("RunNode", &oss::lua::LuaSensorScript::RunNode)
-            //                    ];
-
-            //            luaL_dostring(
-            //                    this->LuaState,
-            //                    "function init()\n"
-            //                    "  print(\"Hello Lua init\")"
-            //                    "end\n"
-            //                    );
-
+            // Loading file
             luaL_dofile(this->LuaState, this->GetVariable("file").c_str());
 
+            // Loading main functions
+            luabind::module(this->LuaState) [
+                    luabind::class_<LuaSensorScript>("oss")
+                    .def("GetVariable", &oss::tree::TreeNode::GetVariable)
+                    .def("SetVariable", &oss::tree::TreeNode::SetVariable)
+                    .def("GetConstante", &oss::tree::TreeNode::GetConstante)
+                    //.def("GetChildNode", &oss::tree::TreeNode::GetChildNode)
+                    //.def("AddChildNode", &oss::tree::TreeNode::AddChildNode)
+                    //.def("GetParrentNode", &oss::tree::TreeNode::GetParrentNode)
+                    //.def("GetRootNode", &oss::tree::TreeNode::GetRootNode)
+                    ];
 
-            // Loading Constants
-            //            luabind::module(this->LuaState)
-            //                    [
-            //                    luabind::namespace_("oss")
-            //                    [
-            //                    luabind::namespace_("constants")
-            //                    [
-            //                    luabind::namespace_("variableNames")
-            //                    [
-            //                    //                    luabind::value("ObjectName", &oss::constants::variableNames::ObjectName)
-            //                    luabind::namespace_("variousVariables")
-            //                    [
-            //                    ]
-            //                    ]
-            //                    ]
-            //                    ]
-            //                    ];
+            // Bind to this object
+
+            luabind::globals(this->LuaState)["oss"] = this;
 
             try {
                 // Call Init Function
                 luabind::call_function<void>(this->LuaState, "init");
             } catch (luabind::error e) {
-                std::cerr << e.what() << std::endl;
+                std::cerr << "ERROR: " << e.what() << ", " << luabind::object(luabind::from_stack(e.state(), -1)) << std::endl;
             }
         }
 
         void LuaSensorScript::RunNode() {
 
             //            luaL_dostring(this->LuaState, "print(\"test: \", 1)");
+
             std::cout << "run node: " << this->GetVariable("file") << std::endl;
 
             this->TreeNode::RunNode();
