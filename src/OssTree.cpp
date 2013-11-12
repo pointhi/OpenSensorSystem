@@ -43,6 +43,9 @@ namespace oss {
                     return *it;
                 }
             }
+#ifdef DEBUG
+            std::clog << "DEBUG: TreeNode::GetChildNode(" << childName << "), element not found" << std::endl;
+#endif
             throw "No Child Element found";
         }
 
@@ -54,6 +57,9 @@ namespace oss {
 
                 return *it;
             }
+#ifdef DEBUG
+            std::clog << "DEBUG: TreeNode::GetChildNode(" << id << "), element not found, id to high" << std::endl;
+#endif
             throw "Id to high";
         }
 

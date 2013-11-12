@@ -10,6 +10,11 @@
 #ifndef OPENSENSORSYSTEM_HPP
 #define	OPENSENSORSYSTEM_HPP
 
+// Debug Warning
+#ifdef DEBUG
+#warning "DEBUG Modus Enabled!"
+#endif
+
 /// General
 #include "OssTree.hpp"
 #include "OssGroups.hpp"

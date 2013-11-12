@@ -81,11 +81,17 @@
           <incDir>
             <pElem>/usr/include/lua5.2</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>DEBUG</Elem>
+          </preprocessorList>
         </cTool>
         <ccTool>
           <incDir>
             <pElem>/usr/include/lua5.2</pElem>
           </incDir>
+          <preprocessorList>
+            <Elem>DEBUG</Elem>
+          </preprocessorList>
         </ccTool>
         <linkerTool>
           <linkerLibItems>

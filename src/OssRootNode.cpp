@@ -63,6 +63,11 @@ namespace oss {
     }
 
     void RootNode::parseXml(std::string filePath) {
+
+#ifdef DEBUG
+        std::clog << "DEBUG: Parse XML-File: " << filePath << std::endl;
+#endif
+
         tinyxml2::XMLDocument doc;
 
         switch (doc.LoadFile(filePath.c_str())) {
@@ -103,6 +108,9 @@ namespace oss {
                 return (*it).lock();
             }
         }
+#ifdef DEBUG
+        std::clog << "DEBUG: RootNode::GetSensor(" << _name << "), element not found" << std::endl;
+#endif
         throw "No Sensor Element found";
     }
 
@@ -114,6 +122,9 @@ namespace oss {
 
             return (*it).lock();
         }
+#ifdef DEBUG
+        std::clog << "DEBUG: RootNode::GetSensor(" << _id << "), element not found (Id to high)" << std::endl;
+#endif
         throw "Id to high";
     }
 
