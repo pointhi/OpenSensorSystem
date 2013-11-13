@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1303538962/I2cSlave.o \
 	${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o \
 	${OBJECTDIR}/src/OssGroups.o \
+	${OBJECTDIR}/src/OssNodeType.o \
 	${OBJECTDIR}/src/lua/LuaSensorScript.o \
 	${OBJECTDIR}/src/sensor/OssSensor.o
 
@@ -104,6 +105,11 @@ ${OBJECTDIR}/src/OssGroups.o: src/OssGroups.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssGroups.o src/OssGroups.cpp
+
+${OBJECTDIR}/src/OssNodeType.o: src/OssNodeType.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssNodeType.o src/OssNodeType.cpp
 
 ${OBJECTDIR}/src/lua/LuaSensorScript.o: src/lua/LuaSensorScript.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/lua

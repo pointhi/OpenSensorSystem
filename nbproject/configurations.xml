@@ -19,6 +19,7 @@
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp</itemPath>
         <itemPath>include/OssConstants.hpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp</itemPath>
+        <itemPath>include/OssNodeType.hpp</itemPath>
         <itemPath>include/OssRoot.hpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssRootNode.hpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp</itemPath>
@@ -46,6 +47,7 @@
           <itemPath>src/sensor/OssSensor.cpp</itemPath>
         </logicalFolder>
         <itemPath>src/OssGroups.cpp</itemPath>
+        <itemPath>src/OssNodeType.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp</itemPath>
         <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp</itemPath>
@@ -175,6 +177,8 @@
       </item>
       <item path="include/OssConstants.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/OssNodeType.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/OssRoot.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lua/OssLuaSensorScript.hpp" ex="false" tool="3" flavor2="0">
@@ -182,6 +186,8 @@
       <item path="include/sensor/OssSensor.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/OssGroups.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/OssNodeType.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lua/LuaSensorScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -296,6 +302,8 @@
       </item>
       <item path="include/OssConstants.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="include/OssNodeType.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/OssRoot.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="include/lua/OssLuaSensorScript.hpp" ex="false" tool="3" flavor2="0">
@@ -303,6 +311,8 @@
       <item path="include/sensor/OssSensor.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/OssGroups.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/OssNodeType.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/lua/LuaSensorScript.cpp" ex="false" tool="1" flavor2="0">
       </item>

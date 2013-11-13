@@ -18,6 +18,7 @@
 /// General
 #include "OssTree.hpp"
 #include "OssGroups.hpp"
+#include "OssNodeType.hpp"
 #include "OssRoot.hpp"
 #include "OssRootNode.hpp"
 
@@ -35,6 +36,7 @@
 /// I2C
 #include "i2c/OssI2cHost.hpp"
 #include "i2c/OssI2cSlave.hpp"
+#include "i2c/OssI2cSmbSlave.hpp"
 
 /// SPI
 

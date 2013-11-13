@@ -13,6 +13,8 @@
 
 #include <tinyxml2.h>
 #include <iostream>
+#include <tr1/memory>
+#include <luabind/luabind.hpp>
 
 namespace oss {
 

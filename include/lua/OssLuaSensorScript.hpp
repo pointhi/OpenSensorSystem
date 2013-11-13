@@ -11,6 +11,7 @@
 #define	OSSLUASENSORSCRIPT_HPP
 
 #include "../OssGroups.hpp"
+#include "../OssNodeType.hpp"
 
 struct lua_State;
 
@@ -49,6 +50,38 @@ namespace oss {
         public:
 
             virtual void RunNode();
+
+        public:
+
+            void RegisterInLua(luabind::class_<LuaSensorScript>& x);
+
+        protected:
+
+            // Special functions for Lua to read variables from parrents and childs.
+
+            const std::string GetVariableFromParrent(std::string _variableName) const {
+                return this->GetParrentNode()->GetVariable(_variableName);
+            }
+
+            const std::string GetVariableFromChildNode(std::string _variableName, const std::string _childName) {
+                return this->GetChildNode(_childName)->GetVariable(_variableName);
+            }
+
+            const std::string GetVariableFromChildNode(std::string _variableName, const unsigned int _childId) {
+                return this->GetChildNode(_childId)->GetVariable(_variableName);
+            }
+
+            const oss::NodeType::NodeTypes GetNodeTypeFromParrent() const {
+                return oss::NodeType::ReturnNodeType(this->GetParrentNode());
+            }
+
+            const oss::NodeType::NodeTypes GetNodeTypeFromChildNode(const std::string _childName) {
+                return oss::NodeType::ReturnNodeType(this->GetChildNode(_childName));
+            }
+
+            const oss::NodeType::NodeTypes GetNodeTypeFromChildNode(const unsigned int _childId) {
+                return oss::NodeType::ReturnNodeType(this->GetChildNode(_childId));
+            }
 
         private:
 
