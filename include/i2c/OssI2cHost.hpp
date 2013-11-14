@@ -21,9 +21,8 @@ namespace oss {
     namespace i2c {
 
         /**
-         * @brief
+         * @brief Represent an I2C Host
          */
-
         class Host : public oss::HostGroup {
         public:
 

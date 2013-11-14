@@ -16,9 +16,8 @@ namespace oss {
     namespace i2c {
 
         /**
-         * @brief
+         * @brief Represent a SPI I2C Slave
          */
-
         class SmbSlave : public Slave {
         public:
             SmbSlave();

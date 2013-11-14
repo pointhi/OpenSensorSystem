@@ -14,7 +14,6 @@
 
 #include <iostream>
 #include <tr1/memory>
-#include <luabind/luabind.hpp>
 
 namespace tinyxml2 {
     class XMLNode;

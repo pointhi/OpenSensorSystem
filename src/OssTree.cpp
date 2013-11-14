@@ -23,7 +23,7 @@ namespace oss {
         TreeNode::TreeNode() {
         }
 
-        TreeNode::TreeNode(std::string newName) {
+        TreeNode::TreeNode(const std::string newName) {
             this->SetVariable(oss::constants::variableNames::ObjectName, newName);
         }
 
@@ -114,7 +114,7 @@ namespace oss {
             return returnTree;
         }
 
-        std::string TreeNode::GetVariable(std::string name) const {
+        const std::string TreeNode::GetVariable(const std::string name) const {
             if (this->GetConstante(this->variables[name]) == ("")) {
                 return this->variables[name];
             } else {
@@ -122,7 +122,7 @@ namespace oss {
             }
         }
 
-        double TreeNode::GetVariableAsDouble(std::string name) const {
+        const double TreeNode::GetVariableAsDouble(const std::string name) const {
             std::stringstream ss;
             ss << this->GetVariable(name);
             double helpVariable;
@@ -130,11 +130,11 @@ namespace oss {
             return helpVariable;
         }
 
-        void TreeNode::SetConstante(std::string name, const std::string constant) {
+        void TreeNode::SetConstante(const std::string name, const std::string constant) {
             this->constants[name] = constant;
         }
 
-        std::string TreeNode::GetConstante(std::string name) const {
+        const std::string TreeNode::GetConstante(const std::string name) const {
             if (this->constants.count(name)) {
                 return this->constants[name];
             } else {

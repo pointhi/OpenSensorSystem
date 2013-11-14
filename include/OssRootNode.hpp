@@ -22,7 +22,7 @@
 namespace oss {
 
     /**
-     * @brief
+     * @brief Root Node, which control the different devices
      *
      * @warning You must initialize this object in an std::tr1::shared_ptr<oss::tree::TreeNode>, or simply using oss::Root
      */

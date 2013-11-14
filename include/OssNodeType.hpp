@@ -15,6 +15,9 @@
 
 namespace oss {
 
+    /**
+     * @brief Representing Classes which are based on oss::tree::treeNode
+     */
     class NodeType {
     private:
         NodeType();
@@ -23,8 +26,9 @@ namespace oss {
 
     public:
 
-        // Enum, to represent each class
-
+        /**
+         * @brief Represent all Classes, to make it easier to check which one is used
+         */
         enum NodeTypes {
             _NULL = 0,
             oss_root, oss_rootNode,
@@ -33,8 +37,18 @@ namespace oss {
             oss_sensor_Sensor
         };
 
+        /**
+         * @brief Register enums in lua-script
+         *
+         * @param x luabind class
+         */
         static void RegisterInLua(luabind::class_<NodeType>& x);
 
+        /**
+         * @brief Return the Enum Element, which represent the given class pointer
+         *
+         * @param _Node Class pointer to check
+         */
         static NodeTypes ReturnNodeType(std::tr1::shared_ptr<oss::tree::TreeNode> _Node);
     };
 

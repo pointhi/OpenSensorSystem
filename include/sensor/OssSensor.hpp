@@ -20,6 +20,9 @@ namespace oss {
 
     namespace sensor {
 
+        /**
+         * @brief Represent a Sensor
+         */
         class Sensor : public SensorGroup {
         public:
             Sensor();

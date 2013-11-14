@@ -14,12 +14,12 @@
 
 #include "../OssGroups.hpp"
 
-/**
- * \brief
- */
 namespace oss {
     namespace i2c {
 
+        /**
+         * @brief Represent a normal I2C Slave
+         */
         class Slave : public oss::i2c::I2cGroup {
         public:
             Slave();

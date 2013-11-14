@@ -15,6 +15,13 @@
 namespace oss {
     namespace specialFunctions {
         namespace io {
+
+            /**
+             * @brief Convert an String with represent the speed into double
+             *
+             * @param clock String with represent the speed
+             * @return The Clock-Speed in Hz
+             */
             double GetClockSpeedFromString(const std::string Clock);
         }
     }

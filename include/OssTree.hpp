@@ -28,7 +28,7 @@ namespace oss {
 
             TreeNode();
 
-            explicit TreeNode(std::string newName);
+            explicit TreeNode(const std::string newName);
 
             TreeNode(const TreeNode &orig);
 
@@ -138,28 +138,8 @@ namespace oss {
              * @return shared_ptr to Element
              */
             std::tr1::shared_ptr<TreeNode> GetElementNode() {
-                //                if (this->elementNode.expired()) {
-                //                    std::tr1::shared_ptr<TreeNode> helpPtr = (const_cast<TreeNode*> (this));
-                //                    this->SetElementNode(helpPtr);
-                //                    this->SetElementNode(this->shared_from_this());
-                //                }
-                //                return this->elementNode.lock();
                 return this->shared_from_this();
-
             }
-
-            /**
-             * @brief Set weak_ptr to Element Node
-             *
-             * @param _parentNode
-             */
-            //            void SetElementNode(std::tr1::weak_ptr<TreeNode> _elementNode) {
-            //                if (_elementNode.lock().get() == this) {
-            //                    this->elementNode = _elementNode;
-            //                } else {
-            //                    std::cerr << "ERROR: The function Argument for SetElementNode isn't a weak_ptr to this element" << std::endl;
-            //                }
-            //            }
 
             /**
              * @brief Return number of Child Elements
@@ -195,7 +175,7 @@ namespace oss {
              * @param name Name of the Variable
              * @param variable Value of the variable
              */
-            void SetVariable(std::string name, const std::string variable) {
+            void SetVariable(const std::string name, const std::string variable) {
                 this->variables[name] = variable;
             }
 
@@ -206,7 +186,7 @@ namespace oss {
              * @param name Name of the Variable
              * @return Value of the Variable
              */
-            std::string GetVariable(std::string name) const;
+            const std::string GetVariable(const std::string name) const;
 
             /**
              * @brief Get a Variable as Double
@@ -215,7 +195,7 @@ namespace oss {
              * @param name Name of the Variable
              * @return Value of the Variable as Double
              */
-            double GetVariableAsDouble(std::string name) const;
+            const double GetVariableAsDouble(const std::string name) const;
 
         public:
 
@@ -226,7 +206,7 @@ namespace oss {
              * @param name Name of the Constant
              * @param constant Value of the Constant
              */
-            void SetConstante(std::string name, const std::string constant);
+            void SetConstante(const std::string name, const std::string constant);
 
             /**
              * @brief Get a Constant
@@ -235,7 +215,7 @@ namespace oss {
              * @param name Name of the Constant
              * @return Value of the Constant, "" when no Constant exists
              */
-            std::string GetConstante(std::string name) const;
+            const std::string GetConstante(const std::string name) const;
 
         private:
             std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
