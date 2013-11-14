@@ -86,6 +86,7 @@ namespace oss {
         private:
 
             lua_State *LuaState;
+            bool LuaScriptEnabled;
 
         };
     }
