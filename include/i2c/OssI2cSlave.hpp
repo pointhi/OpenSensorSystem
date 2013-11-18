@@ -11,8 +11,11 @@
 #define	OSSI2CSLAVE_HPP
 
 #include <string>
+#include <vector>
 
 #include "../OssGroups.hpp"
+
+#include <luabind/class.hpp>
 
 namespace oss {
     namespace i2c {
@@ -38,6 +41,12 @@ namespace oss {
             }
 
             void parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode);
+
+        public:
+            void RegisterInLua(luabind::class_<Slave>& x);
+
+            std::vector<unsigned char> readFromSlave(unsigned int _bits);
+            void writeToSlave(std::vector<unsigned char> _writeData);
         };
     }
 }

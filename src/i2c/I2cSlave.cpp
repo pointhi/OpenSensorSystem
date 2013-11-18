@@ -11,8 +11,11 @@
 #include <string>
 #include <sstream>
 #include <tr1/memory>
+#include <vector>
 
 #include <tinyxml2.h>
+#include <luabind/class.hpp>
+#include <luabind/iterator_policy.hpp>
 
 #include "../../include/OssTree.hpp"
 #include "../../include/i2c/OssI2cSlave.hpp"
@@ -66,6 +69,23 @@ namespace oss {
         }
 
         void Slave::parseMainXmlParameter(tinyxml2::XMLNode * const xmlNode) {
+        }
+
+        void Slave::RegisterInLua(luabind::class_<Slave>& x) {
+            x.def("readFromSlave", &oss::i2c::Slave::readFromSlave, luabind::return_stl_iterator);
+            x.def("writeToSlave", &oss::i2c::Slave::writeToSlave);
+        }
+
+        std::vector<unsigned char> Slave::readFromSlave(unsigned int _bits) {
+            std::vector<unsigned char> helpvector;
+            //            helpvector.push_back((unsigned char) 10);
+            //            helpvector.push_back((unsigned char) 20);
+            //            helpvector.push_back((unsigned char) 30);
+            //            helpvector.push_back((unsigned char) 40);
+            return helpvector;
+        }
+
+        void Slave::writeToSlave(std::vector<unsigned char> _writeData) {
         }
 
     }
