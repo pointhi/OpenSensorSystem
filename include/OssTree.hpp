@@ -10,7 +10,7 @@
 #ifndef OSSTREE_HPP
 #define	OSSTREE_HPP
 
-#include <set>
+#include <vector>
 #include <tr1/memory>
 #include <map>
 #include <string>
@@ -46,8 +46,8 @@ namespace oss {
              * @brief Would be called to make an update of the data, and call when needed nodes deeper in the tree
              */
             virtual void RunNode() {
-                for (std::set<std::tr1::shared_ptr<TreeNode> >::iterator it = this->childNodes.begin(); it != this->childNodes.end(); it++) {
-                    (*it)->RunNode();
+                for (int i = 0; i < this->childNodes.size(); i++) {
+                    this->childNodes.at(i)->RunNode();
                 }
             }
 
@@ -57,7 +57,7 @@ namespace oss {
              * @param childNode The new Node
              */
             virtual void AddChildNode(std::tr1::shared_ptr<TreeNode> _childNode) {
-                this->childNodes.insert(_childNode);
+                this->childNodes.push_back(_childNode);
                 _childNode->SetParrentNode(this->GetElementNode());
                 _childNode->InitChild();
             }
@@ -68,16 +68,21 @@ namespace oss {
              * @param childNode shared_ptr of the element
              */
             virtual void RemoveChildNode(std::tr1::shared_ptr<TreeNode> childNode) {
-                this->childNodes.erase(childNode);
+                for (int i = 0; i<this->childNodes.size(); i++) {
+                    if (this->childNodes.at(i).get() == childNode.get()) {
+                        this->RemoveChildNode(i);
+                        break;
+                    }
+                }
             }
 
             /**
              * @brief Remove a child-element
              *
-             * @param childName Name of the child element
+             * @param childId Id of the child element
              */
-            virtual void RemoveChildNode(const std::string childName) {
-                this->childNodes.erase(this->GetChildNode(childName));
+            void RemoveChildNode(const unsigned int childId) {
+                this->childNodes.erase(this->childNodes.begin() + childId);
             }
 
             /**
@@ -162,7 +167,6 @@ namespace oss {
              * @return A string who contain the full tree-network
              *
              * @warning This Function is recursiv, in worst case the function go so long like deep != 0
-             * @todo implementing rendering without script parts and or emty names
              */
             std::string DrawTree(const bool drawScriptParts = true, const std::string treeString = "|- ", const std::string treeChildString = "  ", const unsigned int deep = 100) const;
 
@@ -218,7 +222,7 @@ namespace oss {
             const std::string GetConstante(const std::string name) const;
 
         private:
-            std::set<std::tr1::shared_ptr<TreeNode> > childNodes;
+            std::vector<std::tr1::shared_ptr<TreeNode> > childNodes;
             std::tr1::weak_ptr<TreeNode> parentNode, elementNode;
 
             mutable std::map<std::string, std::string> variables;

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <tr1/memory>
+#include <set>
 
 #include <tinyxml2.h>
 

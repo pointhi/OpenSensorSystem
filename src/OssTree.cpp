@@ -12,6 +12,7 @@
 #include <tr1/memory>
 #include <sstream>
 #include <iostream>
+#include <stdexcept>
 
 #include "../include/OssTree.hpp"
 #include "../include/OssConstants.hpp"
@@ -34,33 +35,20 @@ namespace oss {
         }
 
         std::tr1::shared_ptr<TreeNode> TreeNode::GetChildNode(const std::string childName) {
-            for (std::set<std::tr1::shared_ptr<TreeNode> >::iterator it = this->childNodes.begin()
-                    ; it != this->childNodes.end()
-                    ; it++
-                    ) {
+            for (int i = 0; i<this->childNodes.size(); i++) {
 
-                if ((*it).get()->GetVariable(oss::constants::variableNames::ObjectName) == childName) {
-                    return *it;
+                if (this->childNodes.at(i).get()->GetVariable(oss::constants::variableNames::ObjectName) == childName) {
+                    return this->childNodes.at(i);
                 }
             }
 #ifdef DEBUG
             std::clog << "DEBUG: TreeNode::GetChildNode(" << childName << "), element not found" << std::endl;
 #endif
-            throw "No Child Element found";
+            throw std::out_of_range("TreeNode::GetChildNode (" + childName + ") not found");
         }
 
         std::tr1::shared_ptr<TreeNode> TreeNode::GetChildNode(const unsigned int id) {
-            if (id<this->childNodes.size()) {
-                std::set<std::tr1::shared_ptr<TreeNode> >::iterator it = this->childNodes.begin();
-
-                for (unsigned int i = 0; i < id; it++, i++);
-
-                return *it;
-            }
-#ifdef DEBUG
-            std::clog << "DEBUG: TreeNode::GetChildNode(" << id << "), element not found, id to high" << std::endl;
-#endif
-            throw "Id to high";
+            return this->childNodes.at(id);
         }
 
         std::string TreeNode::DrawTree(const bool drawScriptParts, const std::string treeString, const std::string treeChildString, const unsigned int deep) const {
@@ -87,24 +75,21 @@ namespace oss {
             if (deep > 0) {
                 std::string childTree;
 
-                for (std::set<std::tr1::shared_ptr<TreeNode> >::iterator it = this->childNodes.begin()
-                        ; it != this->childNodes.end()
-                        ; it++
-                        ) {
+                for (int i = 0; i< this->childNodes.size(); i++) {
 
                     childTree.clear();
-                    childTree = (*it)->DrawTree(drawScriptParts, treeString, treeChildString, deep - 1);
+                    childTree = this->childNodes.at(i)->DrawTree(drawScriptParts, treeString, treeChildString, deep - 1);
 
                     // Draw a child-string in every row of a child Node
                     if (!skipClass) {
-                        for (unsigned int i = childTree.find(treeString)
-                                ; i < childTree.size()
-                                ; i = childTree.find(treeString, i + treeChildString.size() + 1)
+                        for (unsigned int y = childTree.find(treeString)
+                                ; y < childTree.size()
+                                ; y = childTree.find(treeString, y + treeChildString.size() + 1)
                                 ) {
-                            childTree.insert(i, treeChildString);
+                            childTree.insert(y, treeChildString);
                         }
                     }
-                    if (it != this->childNodes.begin() || !skipClass) {
+                    if (i != 0 || !skipClass) {
                         returnTree += "\n";
                     }
                     returnTree += childTree;
