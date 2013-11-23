@@ -81,7 +81,6 @@ namespace oss {
 
             // Add special I2c-functions if possible
             std::tr1::shared_ptr<oss::i2c::Slave> i2cParrentNode = std::tr1::dynamic_pointer_cast<oss::i2c::Slave>(this->GetParrentNode());
-            // If parrent node is i2c-element, then copy a shared_ptr into the dynamic array
             if (i2cParrentNode.get()) {
                 luabind::class_<oss::i2c::Slave> LuaObject_I2c("i2c");
                 i2cParrentNode->RegisterInLua(LuaObject_I2c);
