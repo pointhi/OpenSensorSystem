@@ -100,10 +100,14 @@ namespace oss {
         }
 
         const std::string TreeNode::GetVariable(const std::string name) const {
-            if (this->GetConstante(this->variables[name]) == ("")) {
-                return this->variables[name];
+            if (this->variables.count(name)) {
+                if (this->GetConstante(this->variables.at(name)).empty()) {
+                    return this->variables.at(name);
+                } else {
+                    return this->GetConstante(this->variables.at(name));
+                }
             } else {
-                return this->GetConstante(this->variables[name]);
+                return std::string();
             }
         }
 
@@ -121,12 +125,12 @@ namespace oss {
 
         const std::string TreeNode::GetConstante(const std::string name) const {
             if (this->constants.count(name)) {
-                return this->constants[name];
+                return this->constants.at(name);
             } else {
                 if (this->GetParrentNode()) {
                     return this->GetParrentNode()->GetConstante(name);
                 } else {
-                    return ("");
+                    return std::string();
                 }
             }
         }
