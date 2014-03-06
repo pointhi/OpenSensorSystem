@@ -6,9 +6,9 @@
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
         <logicalFolder name="i2c" displayName="i2c" projectFiles="true">
-          <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cHost.hpp</itemPath>
-          <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSlave.hpp</itemPath>
-          <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSmbSlave.hpp</itemPath>
+          <itemPath>include/i2c/OssI2cHost.hpp</itemPath>
+          <itemPath>include/i2c/OssI2cSlave.hpp</itemPath>
+          <itemPath>include/i2c/OssI2cSmbSlave.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="lua" displayName="lua" projectFiles="true">
           <itemPath>include/lua/OssLuaSensorScript.hpp</itemPath>
@@ -16,14 +16,14 @@
         <logicalFolder name="sensor" displayName="sensor" projectFiles="true">
           <itemPath>include/sensor/OssSensor.hpp</itemPath>
         </logicalFolder>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp</itemPath>
+        <itemPath>include/OpenSensorSystem.hpp</itemPath>
         <itemPath>include/OssConstants.hpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp</itemPath>
+        <itemPath>include/OssGroups.hpp</itemPath>
         <itemPath>include/OssNodeType.hpp</itemPath>
         <itemPath>include/OssRoot.hpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssRootNode.hpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssTree.hpp</itemPath>
+        <itemPath>include/OssRootNode.hpp</itemPath>
+        <itemPath>include/OssSpecialFunctions.hpp</itemPath>
+        <itemPath>include/OssTree.hpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -36,9 +36,9 @@
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="i2c" displayName="i2c" projectFiles="true">
-          <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cHost.cpp</itemPath>
-          <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp</itemPath>
-          <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp</itemPath>
+          <itemPath>src/i2c/I2cHost.cpp</itemPath>
+          <itemPath>src/i2c/I2cSlave.cpp</itemPath>
+          <itemPath>src/i2c/I2cSmbSlave.cpp</itemPath>
         </logicalFolder>
         <logicalFolder name="lua" displayName="lua" projectFiles="true">
           <itemPath>src/lua/LuaSensorScript.cpp</itemPath>
@@ -48,9 +48,9 @@
         </logicalFolder>
         <itemPath>src/OssGroups.cpp</itemPath>
         <itemPath>src/OssNodeType.cpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp</itemPath>
-        <itemPath>/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp</itemPath>
+        <itemPath>src/OssRootNode.cpp</itemPath>
+        <itemPath>src/OssSpecialFunctions.cpp</itemPath>
+        <itemPath>src/OssTree.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -103,72 +103,72 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp"
+      <item path="include/OpenSensorSystem.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp"
+      <item path="include/OssGroups.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssRootNode.hpp"
+      <item path="include/OssRootNode.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp"
+      <item path="include/OssSpecialFunctions.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssTree.hpp"
+      <item path="include/OssTree.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cHost.hpp"
+      <item path="include/i2c/OssI2cHost.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSlave.hpp"
+      <item path="include/i2c/OssI2cSlave.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSmbSlave.hpp"
+      <item path="include/i2c/OssI2cSmbSlave.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp"
+      <item path="src/OssRootNode.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp"
+      <item path="src/OssSpecialFunctions.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp"
+      <item path="src/OssTree.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cHost.cpp"
+      <item path="src/i2c/I2cHost.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp"
+      <item path="src/i2c/I2cSlave.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp"
+      <item path="src/i2c/I2cSmbSlave.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -228,72 +228,72 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OpenSensorSystem.hpp"
+      <item path="include/OpenSensorSystem.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssGroups.hpp"
+      <item path="include/OssGroups.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssRootNode.hpp"
+      <item path="include/OssRootNode.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssSpecialFunctions.hpp"
+      <item path="include/OssSpecialFunctions.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/OssTree.hpp"
+      <item path="include/OssTree.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cHost.hpp"
+      <item path="include/i2c/OssI2cHost.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSlave.hpp"
+      <item path="include/i2c/OssI2cSlave.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/include/i2c/OssI2cSmbSlave.hpp"
+      <item path="include/i2c/OssI2cSmbSlave.hpp"
             ex="false"
             tool="3"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp"
+      <item path="src/OssRootNode.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp"
+      <item path="src/OssSpecialFunctions.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp"
+      <item path="src/OssTree.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cHost.cpp"
+      <item path="src/i2c/I2cHost.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp"
+      <item path="src/i2c/I2cSlave.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp"
+      <item path="src/i2c/I2cSmbSlave.cpp"
             ex="false"
             tool="1"
             flavor2="0">

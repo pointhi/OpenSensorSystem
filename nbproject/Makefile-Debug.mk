@@ -35,14 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1288313479/OssRootNode.o \
-	${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o \
-	${OBJECTDIR}/_ext/1288313479/OssTree.o \
-	${OBJECTDIR}/_ext/1303538962/I2cHost.o \
-	${OBJECTDIR}/_ext/1303538962/I2cSlave.o \
-	${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o \
 	${OBJECTDIR}/src/OssGroups.o \
 	${OBJECTDIR}/src/OssNodeType.o \
+	${OBJECTDIR}/src/OssRootNode.o \
+	${OBJECTDIR}/src/OssSpecialFunctions.o \
+	${OBJECTDIR}/src/OssTree.o \
+	${OBJECTDIR}/src/i2c/I2cHost.o \
+	${OBJECTDIR}/src/i2c/I2cSlave.o \
+	${OBJECTDIR}/src/i2c/I2cSmbSlave.o \
 	${OBJECTDIR}/src/lua/LuaSensorScript.o \
 	${OBJECTDIR}/src/sensor/OssSensor.o
 
@@ -71,36 +71,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenSensorSystem.${CND_DLIB_EXT}: 
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenSensorSystem.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
-${OBJECTDIR}/_ext/1288313479/OssRootNode.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479
-	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1288313479/OssRootNode.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssRootNode.cpp
-
-${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479
-	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1288313479/OssSpecialFunctions.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssSpecialFunctions.cpp
-
-${OBJECTDIR}/_ext/1288313479/OssTree.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1288313479
-	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1288313479/OssTree.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/OssTree.cpp
-
-${OBJECTDIR}/_ext/1303538962/I2cHost.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cHost.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1303538962
-	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1303538962/I2cHost.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cHost.cpp
-
-${OBJECTDIR}/_ext/1303538962/I2cSlave.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1303538962
-	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1303538962/I2cSlave.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSlave.cpp
-
-${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o: /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1303538962
-	${RM} $@.d
-	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1303538962/I2cSmbSlave.o /home/thomas/Dokumente/Projekte/robotic/OpenSensorSystem/src/i2c/I2cSmbSlave.cpp
-
 ${OBJECTDIR}/src/OssGroups.o: src/OssGroups.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
@@ -110,6 +80,36 @@ ${OBJECTDIR}/src/OssNodeType.o: src/OssNodeType.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssNodeType.o src/OssNodeType.cpp
+
+${OBJECTDIR}/src/OssRootNode.o: src/OssRootNode.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssRootNode.o src/OssRootNode.cpp
+
+${OBJECTDIR}/src/OssSpecialFunctions.o: src/OssSpecialFunctions.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssSpecialFunctions.o src/OssSpecialFunctions.cpp
+
+${OBJECTDIR}/src/OssTree.o: src/OssTree.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/OssTree.o src/OssTree.cpp
+
+${OBJECTDIR}/src/i2c/I2cHost.o: src/i2c/I2cHost.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/i2c
+	${RM} $@.d
+	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/i2c/I2cHost.o src/i2c/I2cHost.cpp
+
+${OBJECTDIR}/src/i2c/I2cSlave.o: src/i2c/I2cSlave.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/i2c
+	${RM} $@.d
+	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/i2c/I2cSlave.o src/i2c/I2cSlave.cpp
+
+${OBJECTDIR}/src/i2c/I2cSmbSlave.o: src/i2c/I2cSmbSlave.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/i2c
+	${RM} $@.d
+	$(COMPILE.cc) -g -DDEBUG -I/usr/include/lua5.2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/i2c/I2cSmbSlave.o src/i2c/I2cSmbSlave.cpp
 
 ${OBJECTDIR}/src/lua/LuaSensorScript.o: src/lua/LuaSensorScript.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/lua

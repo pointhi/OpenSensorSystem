@@ -1,6 +1,6 @@
 language: cpp
 before_install:
- - echo | sudo apt-add-repository ppa:eugenesan/ppa
+ - sudo apt-add-repository ppa:eugenesan/ppa
  - sudo apt-get -qq update
  - sudo apt-get -qq install libtinyxml2-dev libluabind-dev liblua5.2-dev 
 compiler:
