@@ -1,0 +1,7 @@
+language: cpp
+before_install:
+ - sudo apt-get -qq update
+ - sudo apt-get -qq install libtinyxml2-dev libluabind-dev liblua5.2-dev 
+compiler:
+  - gcc
+script: make
