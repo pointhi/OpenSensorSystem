@@ -7,11 +7,15 @@ A tree based controll-system to work with sensors, based on xml and lua
 
 **work status:** pre Alpha, still in Developing
 
+[![Build Status](https://travis-ci.org/pointhi/OpenSensorSystem.png?branch=master)](https://travis-ci.org/pointhi/OpenSensorSystem)
+
 ##Needed-Librarys
 
 * tinyxml2
 * lua2.5
 * luabind
+
+```sudo apt-get install libtinyxml2-dev libluabind-dev liblua5.2-dev```
 
 ##Documentation
 
